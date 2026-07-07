@@ -1,0 +1,9 @@
+﻿event_id,timestamp,stage,participants,domain,harm_level,impact_score,repair_score,learning_score,summary
+E001,2026-01-05T19:00:00,New Relationship,A|B,Communication,1,20,55,60,Delayed reply exposed unclear cadence expectations
+E002,2026-02-14T20:00:00,Exclusivity,A|B,Effort,2,45,40,50,One partner failed to plan agreed celebration
+E003,2026-04-01T21:00:00,Family Integration,A|B|Family,Boundaries,3,70,20,30,Family pressure bypassed couple decision rights
+E004,2027-05-10T09:00:00,Marriage,A|B,Household,2,50,65,70,Chronic uneven chore initiation entered repair plan
+E005,2030-09-01T08:00:00,Parenting,A|B|Child1,Gifted Child,2,60,70,75,Training pathway created sibling fairness concern
+E006,2036-06-15T18:30:00,Midlife,A|B,Lifestyle Drift,2,55,45,40,Shared activities declined and clutter rose
+E007,2042-03-08T17:00:00,Renewal,A|B,Second Spring,0,10,85,90,Couple restarted health and shared play routines
+E008,2058-11-20T10:00:00,Aging,A|B,Caregiving,1,35,80,85,Role changes required dignity-centered support plan
