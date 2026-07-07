@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RelationshipEvent",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp",
+    "stage",
+    "facts",
+    "consent_class"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "stage": {
+      "type": "string"
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "harm_level": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 5
+    },
+    "confidence": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "consent_class": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "repair": {
+      "type": "object"
+    },
+    "retest_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
