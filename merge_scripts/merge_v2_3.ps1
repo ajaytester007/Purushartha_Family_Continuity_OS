@@ -1,4 +1,87 @@
-﻿
+$ErrorActionPreference = "Stop"
+
+Write-Host "== Merging Purushartha OS v2.3 assets ==" -ForegroundColor Cyan
+
+$Dirs = @(
+"92_Generated_Reports",
+"93_Report_Builder_UI",
+"94_Release_Notes",
+"95_Backlog_vNext"
+)
+
+foreach ($d in $Dirs) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
+
+@'
+# Release Notes - v2.3 Interactive Report Builder UI
+
+## Purpose
+
+v2.3 adds an actual interactive Report Builder tab inside the Streamlit workbench.
+
+## Added
+
+- Report Builder tab.
+- Report type selector.
+- Section selector.
+- Context note input.
+- Markdown generation.
+- Local generated report storage.
+- Report preview.
+- Download buttons.
+- Generated reports list.
+
+## Correction
+
+v2.2 made reports visible. v2.3 lets the user generate new report outputs directly from the app.
+'@ | Set-Content -Encoding UTF8 "94_Release_Notes\v2.3_Interactive_Report_Builder_UI.md"
+
+@'
+# Report Builder UI
+
+## Features
+
+- Choose report type.
+- Choose sections.
+- Add context note.
+- Generate Markdown.
+- Preview generated report.
+- Download generated report.
+- Save generated report locally.
+
+## Output Folder
+
+`92_Generated_Reports`
+'@ | Set-Content -Encoding UTF8 "93_Report_Builder_UI\Report_Builder_UI.md"
+
+@'
+# v2.4 Backlog
+
+## Theme
+
+Consent Ledger UI
+
+## Candidate Enhancements
+
+- Consent ledger editor.
+- Evidence registry editor.
+- Public/private mode badge.
+- Data retention controls.
+- Consent validation before report generation.
+- Safety override gate.
+- Report publication approval gate.
+'@ | Set-Content -Encoding UTF8 "95_Backlog_vNext\v2.4_Backlog.md"
+
+@'
+# Generated Reports
+
+This folder stores local Markdown reports generated from the Streamlit Report Builder.
+
+Public demo reports should remain synthetic.
+Private reports should stay local unless explicitly sanitized and approved.
+'@ | Set-Content -Encoding UTF8 "92_Generated_Reports\README.md"
+
+@'
+
 import sqlite3
 from pathlib import Path
 from datetime import datetime
@@ -361,3 +444,6 @@ with tabs[9]:
 - Safety override must supersede relationship optimization.
 """)
 
+'@ | Set-Content -Encoding UTF8 "51_Streamlit_MVP\app.py"
+
+Write-Host "v2.3 assets merged successfully." -ForegroundColor Green
