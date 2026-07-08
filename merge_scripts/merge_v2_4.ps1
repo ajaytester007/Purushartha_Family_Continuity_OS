@@ -1,4 +1,124 @@
-﻿
+$ErrorActionPreference = "Stop"
+
+Write-Host "== Merging Purushartha OS v2.4 assets ==" -ForegroundColor Cyan
+
+$Dirs = @(
+"96_Consent_Ledger_UI",
+"97_Evidence_Governance",
+"98_Publication_Approval_Gate",
+"99_Release_Notes",
+"100_Backlog_vNext"
+)
+
+foreach ($d in $Dirs) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
+
+@'
+# Release Notes - v2.4 Consent Ledger UI and Evidence Governance
+
+## Purpose
+
+v2.4 adds the first visible Consent Ledger UI foundation inside Streamlit and strengthens evidence governance.
+
+## Added
+
+- Consent Ledger tab in Streamlit.
+- Evidence registry display.
+- Consent summary chart.
+- Save consent ledger locally.
+- Report generation consent warning.
+- Publication approval gate model.
+- Public/private mode guidance.
+- v2.5 backlog for Graph Explorer UI.
+
+## Guardrail
+
+Consent data edited in Streamlit Cloud may not persist permanently. Durable private governance belongs in local/private mode.
+'@ | Set-Content -Encoding UTF8 "99_Release_Notes\v2.4_Consent_Ledger_UI_and_Evidence_Governance.md"
+
+@'
+# Consent Ledger UI
+
+## Purpose
+
+The Consent Ledger UI lets the user review and edit consent records.
+
+## Columns
+
+- consent_id
+- participant
+- record_id
+- status
+- allowed_viewers
+- allowed_analysis
+- retention_until
+- revoked_at
+
+## Warning
+
+Cloud edits may not persist. Local mode is required for durable private governance records.
+'@ | Set-Content -Encoding UTF8 "96_Consent_Ledger_UI\Consent_Ledger_UI.md"
+
+@'
+# Evidence Governance
+
+## Required Fields
+
+- registry_id
+- source_type
+- source_name
+- owner
+- consent_class
+- purpose
+- allowed_analysis
+- retention_status
+- notes
+
+## Rule
+
+A report should not cite or analyze evidence that lacks consent classification and allowed analysis.
+'@ | Set-Content -Encoding UTF8 "97_Evidence_Governance\Evidence_Governance.md"
+
+@'
+# Publication Approval Gate
+
+## Purpose
+
+Before any report leaves private local mode, it must pass a publication gate.
+
+## Gate Questions
+
+1. Is the report synthetic or sanitized?
+2. Does it contain real private names?
+3. Does it include health data?
+4. Does it include private correspondence?
+5. Does it include third-party information?
+6. Is there explicit permission to publish?
+7. Is the intended audience correct?
+
+## Rule
+
+If any answer is unsafe, do not publish.
+'@ | Set-Content -Encoding UTF8 "98_Publication_Approval_Gate\Publication_Approval_Gate.md"
+
+@'
+# v2.5 Backlog
+
+## Theme
+
+Graph Explorer UI
+
+## Candidate Enhancements
+
+- Graph filters by node type.
+- Graph filters by stage/domain.
+- Risk-to-repair path view.
+- Tollgate path explorer.
+- Mermaid rendering in Streamlit.
+- Graph report generation from selected nodes.
+'@ | Set-Content -Encoding UTF8 "100_Backlog_vNext\v2.5_Backlog.md"
+
+@'
+
 import sqlite3
 from pathlib import Path
 from datetime import datetime
@@ -358,3 +478,6 @@ with tabs[10]:
         st.bar_chart(edited.groupby("status").size())
     st.info("On Streamlit Cloud, edits may not persist permanently. Use local mode for durable private governance data.")
 
+'@ | Set-Content -Encoding UTF8 "51_Streamlit_MVP\app.py"
+
+Write-Host "v2.4 assets merged successfully." -ForegroundColor Green
