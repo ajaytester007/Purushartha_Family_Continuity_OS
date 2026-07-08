@@ -6,6 +6,7 @@ from math import prod
 
 import pandas as pd
 import streamlit as st
+import os
 
 ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "52_SQLite_MVP" / "purushartha_os_mvp.sqlite"
@@ -23,6 +24,8 @@ SCD2_AUDIT_PATH = ROOT / "106_SCD2_State_Editor" / "state_transition_audit.csv"
 GRAPH_NODES = ROOT / "68_Event_Graph_Engine" / "event_graph_nodes.csv"
 GRAPH_EDGES = ROOT / "68_Event_Graph_Engine" / "event_graph_edges.csv"
 GENERATED_REPORT_DIR = ROOT / "92_Generated_Reports"
+WORKBENCH_MODE = os.environ.get("PURUSHARTHA_WORKBENCH_MODE", "Public Demo")
+PRIVATE_REPORT_DIR = ROOT / "114_Private_Reports"
 
 st.set_page_config(page_title="Purushartha OS Workbench", layout="wide")
 
@@ -153,6 +156,13 @@ with st.sidebar:
     st.markdown("[Public Pages](https://ajaytester007.github.io/Purushartha_Family_Continuity_OS/)")
     st.markdown("---")
     st.warning("Decision support only. Do not use for surveillance, diagnosis, punishment, or publishing private evidence without consent.")
+st.markdown("---")
+mode = st.radio("Workbench Mode", ["Public Demo", "Private Local"], index=0)
+st.session_state["workbench_mode"] = mode
+if mode == "Public Demo":
+    st.success("Public Demo Mode: synthetic/sanitized data only.")
+else:
+    st.error("Private Local Mode: keep outputs local; do not publish private reports.")
 
 tabs = st.tabs([
     "Dashboard",
@@ -267,6 +277,11 @@ with tabs[4]:
 
 with tabs[5]:
     st.header("Interactive Report Builder")
+current_mode = st.session_state.get("workbench_mode", "Public Demo")
+if current_mode == "Private Local":
+    st.error("Private mode outputs must not be committed or published unless sanitized.")
+else:
+    st.success("Public Demo Mode: generated reports must remain synthetic/sanitized.")
     GENERATED_REPORT_DIR.mkdir(parents=True, exist_ok=True)
     report_type = st.selectbox("Report Type", ["Relationship Health Report","Burden Skew Audit","Family Continuity Report","Event Graph Report","Governance Report"])
     sections = st.multiselect("Sections", ["Case Summary","SCD2 State","Event Graph","Governance Guardrails"], default=["Case Summary","SCD2 State","Governance Guardrails"])
@@ -401,4 +416,5 @@ with tabs[10]:
     if not edited.empty and "status" in edited.columns:
         st.bar_chart(edited.groupby("status").size())
     st.info("On Streamlit Cloud, edits may not persist permanently. Use local mode for durable private governance data.")
+
 
