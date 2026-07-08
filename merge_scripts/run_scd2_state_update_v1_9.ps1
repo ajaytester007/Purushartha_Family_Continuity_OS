@@ -1,0 +1,20 @@
+$ErrorActionPreference = "Stop"
+
+Write-Host "== Running SCD2 state update v1.9 ==" -ForegroundColor Cyan
+
+$outDir = "69_SCD2_State_Engine"
+$outFile = Join-Path $outDir "relationship_state_updated_v1_9.csv"
+
+New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+
+@'
+state_id,relationship_id,valid_from,valid_to,is_current,relationship_health_score,burden_skew_score,karma_bond_score,purushartha_balance_score,confidence,source_event_ids,notes
+S001,R001,2026-01-01,2026-06-30,false,78,20,72,74,medium,E001,Early relationship stable with unclear cadence
+S002,R001,2026-07-01,2027-12-31,false,68,35,63,66,medium,E003,Family integration and burden skew emerged
+S003,R001,2028-01-01,2032-12-31,false,74,32,70,72,medium,E004,Marriage operating model improved
+S004,R001,2033-01-01,2038-12-31,false,62,48,58,64,medium,E005,Parenting and gifted child load increased
+S005,R001,2039-01-01,2042-12-31,false,82,24,80,86,medium,E007,Renewal routines restored balance
+S006,R001,2043-01-01,,true,84,22,83,88,medium,E009,Graph-supported state after repair and support mapping
+'@ | Set-Content -Encoding UTF8 $outFile
+
+Write-Host "Generated $outFile" -ForegroundColor Green

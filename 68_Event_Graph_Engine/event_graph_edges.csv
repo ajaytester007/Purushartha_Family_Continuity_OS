@@ -1,0 +1,13 @@
+﻿edge_id,from_node,to_node,edge_type,source_event_id,confidence,notes
+E001,N001,N003,participates_in,,medium,Partner A participates in relationship
+E002,N002,N003,participates_in,,medium,Partner B participates in relationship
+E003,N004,N009,routes_to,CASE004,medium,Boundary bypass routes to tollgate
+E004,N005,N009,routes_to,CASE007,high,Burden skew routes to correction model
+E005,N006,N010,routes_to,CASE012,medium,Gifted child overload routes to parenting load review
+E006,N007,N004,repairs,CASE004,medium,Boundary meeting repairs family bypass
+E007,N008,N005,repairs,CASE007,medium,Household rebalance repairs burden skew
+E008,N006,N011,creates_risk,CASE012,medium,Gifted child load creates sibling fairness risk
+E009,N012,N003,supports,,medium,Support network supports relationship
+E010,N013,N003,protects_floor,,medium,Household resilience protects relationship
+E011,N014,N005,consumes_capacity,CASE014,medium,Pet care obligation contributes to capacity load
+E012,N015,N003,describes_state,,medium,SCD2 state describes relationship

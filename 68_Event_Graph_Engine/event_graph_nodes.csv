@@ -1,0 +1,16 @@
+﻿node_id,node_type,label,stage,domain,confidence,notes
+N001,Person,Partner A,All,Person,medium,Synthetic person node
+N002,Person,Partner B,All,Person,medium,Synthetic person node
+N003,Relationship,Primary Relationship,All,Relationship,medium,Synthetic relationship node
+N004,Event,Family Boundary Bypass,Family Integration,Boundaries,medium,Synthetic case event
+N005,Event,Household Burden Skew,Marriage,Household,high,Synthetic burden event
+N006,Event,Gifted Child Overload,Parenting,Gifted Child,medium,Synthetic parenting event
+N007,Repair,Boundary Meeting,Family Integration,Repair,medium,Repair action
+N008,Repair,Household Rebalance,Marriage,Repair,medium,Repair action
+N009,Tollgate,Continue Correct Reconsider Exit,All,Tollgate,high,Decision model
+N010,Tollgate,Parenting Load Tollgate,Parenting,Tollgate,medium,Parenting load decision model
+N011,Risk,Sibling Fairness Risk,Parenting,Sibling Fairness,medium,Risk created by opportunity load
+N012,Support,Family Support Network,All,Support,medium,Support source
+N013,Asset,Household Resilience,All,Wealth,medium,Resilience asset
+N014,Obligation,Pet Care Obligation,Expanded Household,Pet Care,medium,Household obligation
+N015,State,SCD2 Relationship State,All,State,medium,State history node

@@ -1,0 +1,28 @@
+﻿flowchart TD
+  N001["Person: Partner A"]
+  N002["Person: Partner B"]
+  N003["Relationship: Primary Relationship"]
+  N004["Event: Family Boundary Bypass"]
+  N005["Event: Household Burden Skew"]
+  N006["Event: Gifted Child Overload"]
+  N007["Repair: Boundary Meeting"]
+  N008["Repair: Household Rebalance"]
+  N009["Tollgate: Continue Correct Reconsider Exit"]
+  N010["Tollgate: Parenting Load Tollgate"]
+  N011["Risk: Sibling Fairness Risk"]
+  N012["Support: Family Support Network"]
+  N013["Asset: Household Resilience"]
+  N014["Obligation: Pet Care Obligation"]
+  N015["State: SCD2 Relationship State"]
+  N001 -- participates in --> N003
+  N002 -- participates in --> N003
+  N004 -- routes to --> N009
+  N005 -- routes to --> N009
+  N006 -- routes to --> N010
+  N007 -- repairs --> N004
+  N008 -- repairs --> N005
+  N006 -- creates risk --> N011
+  N012 -- supports --> N003
+  N013 -- protects floor --> N003
+  N014 -- consumes capacity --> N005
+  N015 -- describes state --> N003
