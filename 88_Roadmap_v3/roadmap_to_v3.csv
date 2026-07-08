@@ -1,0 +1,10 @@
+﻿version,title,theme,status,deliverable
+v2.2,Interactive Reports Cockpit,Reports visible in Streamlit,complete,Reports tab and roadmap tab
+v2.3,Report Builder UI,Generate selected reports from app,planned,Report form and export buttons
+v2.4,Consent Ledger UI,Consent and evidence governance in app,planned,Consent entry and validation
+v2.5,Graph Explorer UI,Interactive event graph in app,planned,Graph filters and path view
+v2.6,SCD2 State Editor,Relationship state timeline editing,planned,State change workflow
+v2.7,Private Local Mode,Local-only private data mode,planned,Private mode switch and warnings
+v2.8,Public Demo Mode Lock,Safe public demo constraints,planned,Synthetic-data-only deployment guard
+v2.9,Scenario Simulator,Compare future paths,planned,Case comparison and what-if engine
+v3.0,Family Continuity Intelligence Suite,Integrated local workbench,planned,Reports plus governance plus graph plus state

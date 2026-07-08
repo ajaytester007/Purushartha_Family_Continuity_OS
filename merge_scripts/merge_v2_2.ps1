@@ -1,4 +1,120 @@
-﻿
+$ErrorActionPreference = "Stop"
+
+Write-Host "== Merging Purushartha OS v2.2 assets ==" -ForegroundColor Cyan
+
+$Dirs = @(
+"88_Roadmap_v3",
+"89_Streamlit_Reports_Cockpit",
+"90_Release_Notes",
+"91_Backlog_vNext"
+)
+
+foreach ($d in $Dirs) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
+
+@'
+# Release Notes - v2.2 Interactive Reports Cockpit and Roadmap to v3.0
+
+## Purpose
+
+v2.2 makes the Reports Cockpit visible inside the Streamlit app and publishes the roadmap through v3.0 inside the app.
+
+## Added
+
+- Reports Cockpit tab in Streamlit.
+- Roadmap to v3.0 tab in Streamlit.
+- Manifest-driven report cards.
+- Markdown and CSV preview/download.
+- Public/private and guardrail badges.
+- Roadmap CSV and Markdown.
+- Pages roadmap section.
+- Wiki publishing update.
+
+## Key Correction
+
+v2.1 created report architecture, but the reports were not visible in the app. v2.2 corrects that gap by modifying the actual Streamlit app.
+'@ | Set-Content -Encoding UTF8 "90_Release_Notes\v2.2_Interactive_Reports_Cockpit_and_Roadmap.md"
+
+@'
+version,title,theme,status,deliverable
+v2.2,Interactive Reports Cockpit,Reports visible in Streamlit,complete,Reports tab and roadmap tab
+v2.3,Report Builder UI,Generate selected reports from app,planned,Report form and export buttons
+v2.4,Consent Ledger UI,Consent and evidence governance in app,planned,Consent entry and validation
+v2.5,Graph Explorer UI,Interactive event graph in app,planned,Graph filters and path view
+v2.6,SCD2 State Editor,Relationship state timeline editing,planned,State change workflow
+v2.7,Private Local Mode,Local-only private data mode,planned,Private mode switch and warnings
+v2.8,Public Demo Mode Lock,Safe public demo constraints,planned,Synthetic-data-only deployment guard
+v2.9,Scenario Simulator,Compare future paths,planned,Case comparison and what-if engine
+v3.0,Family Continuity Intelligence Suite,Integrated local workbench,planned,Reports plus governance plus graph plus state
+'@ | Set-Content -Encoding UTF8 "88_Roadmap_v3\roadmap_to_v3.csv"
+
+@'
+# Roadmap to v3.0
+
+## v2.2 - Interactive Reports Cockpit
+Reports become visible inside Streamlit through a manifest-driven cockpit.
+
+## v2.3 - Report Builder UI
+The app can generate selected reports from user-selected sections.
+
+## v2.4 - Consent Ledger UI
+Consent and evidence governance becomes editable and visible inside the app.
+
+## v2.5 - Graph Explorer UI
+The event graph becomes navigable, filterable, and explainable.
+
+## v2.6 - SCD2 State Editor
+Relationship state history can be updated through controlled state transitions.
+
+## v2.7 - Private Local Mode
+The workbench supports a private local mode for consented personal use.
+
+## v2.8 - Public Demo Mode Lock
+The public demo prevents private data ingestion and uses synthetic data only.
+
+## v2.9 - Scenario Simulator
+The system compares future paths and what-if scenarios.
+
+## v3.0 - Family Continuity Intelligence Suite
+A complete integrated local workbench for reports, governance, graph, state, cases, and continuity.
+'@ | Set-Content -Encoding UTF8 "88_Roadmap_v3\Roadmap_to_v3.md"
+
+@'
+# Streamlit Reports Cockpit
+
+## What v2.2 Adds
+
+- Visible Reports Cockpit tab.
+- Manifest-driven report list.
+- Report preview.
+- Markdown/CSV download.
+- Public/private mode badge.
+- Guardrail badge.
+
+## Report Source
+
+`83_Report_Manifest/report_manifest.csv`
+'@ | Set-Content -Encoding UTF8 "89_Streamlit_Reports_Cockpit\Streamlit_Reports_Cockpit.md"
+
+@'
+# v2.3 Backlog
+
+## Theme
+
+Interactive Report Builder UI
+
+## Candidate Enhancements
+
+- Select report type.
+- Select sections.
+- Generate new report from app.
+- Save report to local folder.
+- Download report.
+- Publish selected synthetic report to Wiki.
+- Add report freshness indicator.
+'@ | Set-Content -Encoding UTF8 "91_Backlog_vNext\v2.3_Backlog.md"
+
+@'
+
 import sqlite3
 from pathlib import Path
 from datetime import datetime
@@ -268,3 +384,6 @@ with tabs[8]:
 - Safety override must supersede relationship optimization.
 """)
 
+'@ | Set-Content -Encoding UTF8 "51_Streamlit_MVP\app.py"
+
+Write-Host "v2.2 assets merged successfully." -ForegroundColor Green
