@@ -29,6 +29,10 @@ PRIVATE_REPORT_DIR = ROOT / "114_Private_Reports"
 
 st.set_page_config(page_title="Purushartha OS Workbench", layout="wide")
 
+DEPLOYMENT_MODE = os.environ.get("PURUSHARTHA_DEPLOYMENT_MODE", "public_demo").lower()
+ALLOW_PRIVATE_MODE = os.environ.get("PURUSHARTHA_ALLOW_PRIVATE_MODE", "false").lower() == "true"
+PUBLIC_DEMO_LOCKED = DEPLOYMENT_MODE != "private_local" or not ALLOW_PRIVATE_MODE
+
 def db():
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
@@ -149,6 +153,11 @@ def append_audit(row):
 st.title("Purushartha Family Continuity OS")
 st.caption("Consent-first relationship, family, resilience, wealth, and legacy intelligence workbench.")
 
+if PUBLIC_DEMO_LOCKED:
+    st.error("PUBLIC DEMO LOCK ACTIVE: Use synthetic or sanitized data only. Do not enter private relationship, health, or third-party information.")
+else:
+    st.success("PRIVATE LOCAL MODE ENABLED: Keep outputs local unless sanitized and explicitly approved.")
+
 with st.sidebar:
     st.header("Live System")
     st.markdown("[GitHub Repo](https://github.com/ajaytester007/Purushartha_Family_Continuity_OS)")
@@ -157,7 +166,10 @@ with st.sidebar:
     st.markdown("---")
     st.warning("Decision support only. Do not use for surveillance, diagnosis, punishment, or publishing private evidence without consent.")
 st.markdown("---")
-mode = st.radio("Workbench Mode", ["Public Demo", "Private Local"], index=0)
+available_modes = ["Public Demo"] if PUBLIC_DEMO_LOCKED else ["Public Demo", "Private Local"]
+mode = st.radio("Workbench Mode", available_modes, index=0)
+if PUBLIC_DEMO_LOCKED:
+    st.warning("Private Local mode is disabled in public deployment.")
 st.session_state["workbench_mode"] = mode
 if mode == "Public Demo":
     st.success("Public Demo Mode: synthetic/sanitized data only.")
@@ -286,6 +298,8 @@ else:
     report_type = st.selectbox("Report Type", ["Relationship Health Report","Burden Skew Audit","Family Continuity Report","Event Graph Report","Governance Report"])
     sections = st.multiselect("Sections", ["Case Summary","SCD2 State","Event Graph","Governance Guardrails"], default=["Case Summary","SCD2 State","Governance Guardrails"])
     context_note = st.text_area("Context Note", "Synthetic/demo report generated from the Purushartha OS workbench.")
+    if PUBLIC_DEMO_LOCKED:
+        st.warning("Report generation is public-demo locked. Output must remain synthetic/sanitized.")
     if st.button("Generate Report"):
         content = build_report(report_type, sections, context_note)
         safe_name = report_type.lower().replace(" ", "_").replace("/", "_")
@@ -416,5 +430,6 @@ with tabs[10]:
     if not edited.empty and "status" in edited.columns:
         st.bar_chart(edited.groupby("status").size())
     st.info("On Streamlit Cloud, edits may not persist permanently. Use local mode for durable private governance data.")
+
 
 
