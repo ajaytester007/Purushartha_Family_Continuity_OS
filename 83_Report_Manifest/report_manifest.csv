@@ -1,0 +1,7 @@
+"report_id","report_name","report_type","local_path","wiki_page_hint","public_private_mode","generated_by","audience","guardrail_status"
+"RPT001","Workbench Summary v2.0","Workbench","77_Report_Builder/workbench_summary_v2_0.md","77-Report-Builder-workbench-summary-v2-0","Public Demo","generate_workbench_reports_v2_0.ps1","Project viewer","Synthetic safe"
+"RPT002","Family Continuity Summary v1.8","Family Continuity","53_Report_Exporter/family_continuity_summary_v1_8.md","53-Report-Exporter-family-continuity-summary-v1-8","Public Demo","generate_family_continuity_report_v1_8.ps1","Project viewer","Synthetic safe"
+"RPT003","Event Graph Report v1.9","Event Graph","71_Graph_Reports/event_graph_report_v1_9.md","71-Graph-Reports-event-graph-report-v1-9","Public Demo","generate_graph_report_v1_9.ps1","Project viewer","Synthetic safe"
+"RPT004","Decision Explanations","Case Engine","43_Decision_Explanations/decision_explanations.md","43-Decision-Explanations-decision-explanations","Public Demo","run_tollgate_simulator.ps1","Project viewer","Synthetic safe"
+"RPT005","Repair Plan Outputs","Repair","44_Repair_Plans/repair_plan_outputs.md","44-Repair-Plans-repair-plan-outputs","Public Demo","generate_repair_plans.ps1","Project viewer","Synthetic safe"
+"RPT006","Retest Schedule","Retest","45_Retest_Scheduler/generated_retest_schedule.csv","45-Retest-Scheduler-Retest-Scheduler","Public Demo","generate_repair_plans.ps1","Project viewer","Synthetic safe"
