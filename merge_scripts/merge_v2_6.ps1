@@ -1,4 +1,118 @@
-﻿
+$ErrorActionPreference = "Stop"
+
+Write-Host "== Merging Purushartha OS v2.6 assets ==" -ForegroundColor Cyan
+
+$Dirs = @(
+"106_SCD2_State_Editor",
+"107_State_Transition_Audit",
+"108_State_Change_Reports",
+"109_Release_Notes",
+"110_Backlog_vNext"
+)
+
+foreach ($d in $Dirs) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
+
+@'
+# Release Notes - v2.6 SCD2 State Editor
+
+## Purpose
+
+v2.6 adds a controlled SCD2 State Editor to the Streamlit workbench.
+
+## Added
+
+- SCD2 State Editor tab.
+- Current-state close and new-state create workflow.
+- State change reason.
+- Source event IDs.
+- Confidence label.
+- Transition audit CSV.
+- State transition report.
+- v2.7 backlog for Private Local Mode.
+
+## Guardrail
+
+SCD2 state changes should preserve history. Do not overwrite prior states as if they never happened.
+'@ | Set-Content -Encoding UTF8 "109_Release_Notes\v2.6_SCD2_State_Editor.md"
+
+@'
+# SCD2 State Editor
+
+## Purpose
+
+The SCD2 State Editor lets the user preserve history while creating a new current relationship state.
+
+## Workflow
+
+1. Identify current state.
+2. Close current state by setting is_current=false and valid_to.
+3. Create new state with is_current=true.
+4. Record source event IDs, confidence, and reason.
+5. Append transition audit entry.
+
+## Rule
+
+History is never overwritten.
+'@ | Set-Content -Encoding UTF8 "106_SCD2_State_Editor\SCD2_State_Editor.md"
+
+@'
+transition_id,transition_at,closed_state_id,new_state_id,relationship_id,source_event_ids,confidence,reason
+TR000,2026-01-01T00:00:00Z,S004,S005,R001,synthetic,medium,Initial synthetic transition seed
+'@ | Set-Content -Encoding UTF8 "106_SCD2_State_Editor\state_transition_audit.csv"
+
+@'
+# State Transition Audit
+
+The transition audit records controlled state changes.
+
+## Columns
+
+- transition_id
+- transition_at
+- closed_state_id
+- new_state_id
+- relationship_id
+- source_event_ids
+- confidence
+- reason
+'@ | Set-Content -Encoding UTF8 "107_State_Transition_Audit\State_Transition_Audit.md"
+
+@'
+# State Change Reports
+
+State change reports explain why a new SCD2 state was created.
+
+## Standard Sections
+
+- Prior state
+- New state
+- Source events
+- Reason
+- Confidence
+- Risk changes
+- Repair changes
+- Retest date
+'@ | Set-Content -Encoding UTF8 "108_State_Change_Reports\State_Change_Reports.md"
+
+@'
+# v2.7 Backlog
+
+## Theme
+
+Private Local Mode
+
+## Candidate Enhancements
+
+- Private/local mode switch.
+- Public demo lock.
+- Local persistence warning.
+- Private report folder exclusion from Git.
+- Consent gate before private report generation.
+- Sanitization checklist.
+'@ | Set-Content -Encoding UTF8 "110_Backlog_vNext\v2.7_Backlog.md"
+
+@'
+
 import sqlite3
 from pathlib import Path
 from datetime import datetime
@@ -402,3 +516,6 @@ with tabs[10]:
         st.bar_chart(edited.groupby("status").size())
     st.info("On Streamlit Cloud, edits may not persist permanently. Use local mode for durable private governance data.")
 
+'@ | Set-Content -Encoding UTF8 "51_Streamlit_MVP\app.py"
+
+Write-Host "v2.6 assets merged successfully." -ForegroundColor Green

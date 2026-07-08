@@ -1,0 +1,2 @@
+﻿transition_id,transition_at,closed_state_id,new_state_id,relationship_id,source_event_ids,confidence,reason
+TR000,2026-01-01T00:00:00Z,S004,S005,R001,synthetic,medium,Initial synthetic transition seed
