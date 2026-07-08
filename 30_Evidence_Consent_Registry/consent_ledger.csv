@@ -1,0 +1,3 @@
+﻿consent_id,participant,record_id,status,allowed_viewers,allowed_analysis,retention_until,revoked_at
+C001,synthetic_user,R001,active,project_team,dashboard_and_maps,, 
+C002,synthetic_user,R002,active,project_team,dashboard,, 

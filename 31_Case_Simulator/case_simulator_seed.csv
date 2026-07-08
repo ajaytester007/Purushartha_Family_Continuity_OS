@@ -1,0 +1,6 @@
+﻿case_id,title,stage,primary_domain,harm_level,recommended_tollgate,expected_action
+CASE001,Family Boundary Bypass,Family Integration,Boundaries,3,Continue Correct Reconsider Exit,Boundary meeting and retest
+CASE002,Household Burden Skew,Marriage,Household,2,Continue Correct Reconsider Exit,30-day rebalance
+CASE003,Gifted Child Capture,Parenting,Gifted Child,2,Pregnancy or Parenting Readiness,Protect sibling and couple floors
+CASE004,Midlife Drift,Midlife,Lifestyle Drift,2,Crisis Mode or Renewal,Second spring reset
+CASE005,New Partner Coauthorship,Recovery,Continuity,1,New Partner Entry,Continuity brief and renegotiation window

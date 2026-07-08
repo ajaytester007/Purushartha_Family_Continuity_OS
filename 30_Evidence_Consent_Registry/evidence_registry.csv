@@ -1,0 +1,3 @@
+﻿registry_id,source_type,source_name,owner,consent_class,purpose,allowed_analysis,retention_status,notes
+R001,synthetic_csv,synthetic_lifetime_events,project,A,testing,dashboard_and_maps,retain,Synthetic only
+R002,synthetic_csv,dashboard_metrics_seed,project,A,testing,dashboard,retain,Synthetic only
