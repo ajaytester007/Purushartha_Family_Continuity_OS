@@ -1,0 +1,4 @@
+﻿stage,domain,harm_level,impact_score,repair_score,learning_score,summary
+Marriage,Household,2,55,70,75,Synthetic household burden event
+Parenting,Gifted Child,2,65,72,78,Synthetic gifted child opportunity load event
+Midlife,Lifestyle Drift,2,60,50,55,Synthetic shared joy decline event
