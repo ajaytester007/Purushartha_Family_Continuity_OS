@@ -1,4 +1,112 @@
-﻿
+$ErrorActionPreference = "Stop"
+
+Write-Host "== Merging Purushartha OS v2.5 assets ==" -ForegroundColor Cyan
+
+$Dirs = @(
+"101_Graph_Explorer_UI",
+"102_Graph_Path_Views",
+"103_Mermaid_Graph_Export",
+"104_Release_Notes",
+"105_Backlog_vNext"
+)
+
+foreach ($d in $Dirs) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
+
+@'
+# Release Notes - v2.5 Graph Explorer UI
+
+## Purpose
+
+v2.5 makes the event graph explorable inside the Streamlit app.
+
+## Added
+
+- Graph Explorer tab.
+- Filters by node type, stage, domain, and edge type.
+- Risk-to-repair path view.
+- Tollgate path view.
+- Mermaid graph preview.
+- Mermaid graph download.
+- Graph Explorer documentation.
+- v2.6 backlog for SCD2 State Editor.
+
+## Guardrail
+
+Graph views explain traceable relationships. They are not moral verdicts.
+'@ | Set-Content -Encoding UTF8 "104_Release_Notes\v2.5_Graph_Explorer_UI.md"
+
+@'
+# Graph Explorer UI
+
+## Features
+
+- Node type filter
+- Stage filter
+- Domain filter
+- Edge type filter
+- Filtered node table
+- Filtered edge table
+- Risk-to-repair path view
+- Tollgate path view
+- Mermaid graph preview
+- Mermaid download
+
+## Guardrail
+
+Graph paths are explainable structures, not blame assignments.
+'@ | Set-Content -Encoding UTF8 "101_Graph_Explorer_UI\Graph_Explorer_UI.md"
+
+@'
+# Graph Path Views
+
+## Path Families
+
+- Risk to Repair
+- Event to Tollgate
+- Support to Relationship
+- Obligation to Burden
+- Asset to Floor Protection
+- State to Relationship
+
+## v2.5 Scope
+
+The first app view displays risk/repair and tollgate path tables.
+'@ | Set-Content -Encoding UTF8 "102_Graph_Path_Views\Graph_Path_Views.md"
+
+@'
+# Mermaid Graph Export
+
+The Streamlit Graph Explorer can export a filtered graph as Mermaid `.mmd`.
+
+## Use
+
+Copy the Mermaid output into GitHub Markdown, Mermaid Live, or another renderer.
+
+## Future
+
+v2.6+ may render graph diagrams directly inside the app.
+'@ | Set-Content -Encoding UTF8 "103_Mermaid_Graph_Export\Mermaid_Graph_Export.md"
+
+@'
+# v2.6 Backlog
+
+## Theme
+
+SCD2 State Editor
+
+## Candidate Enhancements
+
+- Editable state timeline.
+- Close current state row.
+- Create new current state.
+- State-change reason.
+- Confidence label.
+- Source event references.
+- State-to-report generator.
+'@ | Set-Content -Encoding UTF8 "105_Backlog_vNext\v2.6_Backlog.md"
+
+@'
+
 import sqlite3
 from pathlib import Path
 from datetime import datetime
@@ -428,3 +536,6 @@ with tabs[10]:
         st.bar_chart(edited.groupby("status").size())
     st.info("On Streamlit Cloud, edits may not persist permanently. Use local mode for durable private governance data.")
 
+'@ | Set-Content -Encoding UTF8 "51_Streamlit_MVP\app.py"
+
+Write-Host "v2.5 assets merged successfully." -ForegroundColor Green
