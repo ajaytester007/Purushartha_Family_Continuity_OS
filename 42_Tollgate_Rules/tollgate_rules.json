@@ -1,0 +1,41 @@
+﻿{
+  "Continue_Correct_Reconsider_Exit": {
+    "green": "Continue when harm is low, repair is credible, and recurrence is low.",
+    "yellow": "Correct when harm is moderate and learning is visible.",
+    "orange": "Reconsider when recurrence is high or repair is weak.",
+    "red": "Exit/protect when safety is compromised or severe harm repeats."
+  },
+  "Divorce_or_Recovery_Tollgate": {
+    "green": "Recovery may be considered when safety is intact and repair is deep.",
+    "yellow": "Structured repair with professional support may be appropriate.",
+    "orange": "Separation planning should be considered when trust injuries remain unresolved.",
+    "red": "Protection planning overrides repair if safety or coercion concerns exist."
+  },
+  "Crisis_Mode_Tollgate": {
+    "green": "Stabilize and continue normal operations.",
+    "yellow": "Consolidate resources and reduce optional obligations.",
+    "orange": "Enter defend/survive mode with temporary lifestyle scale-down.",
+    "red": "Immediate safety, health, housing, liquidity, and dependent protection."
+  },
+  "New_Partner_Entry_Tollgate": {
+    "green": "Proceed with coauthorship and transparent continuity brief.",
+    "yellow": "Slow integration and clarify rights/responsibilities.",
+    "orange": "Delay entry if grief, comparison, or dependent disruption dominates.",
+    "red": "Do not proceed if prior relationship is not ethically closed or safety is unresolved."
+  },
+  "Legacy_Transition_Tollgate": {
+    "green": "Continue legacy planning and wisdom transfer.",
+    "yellow": "Update documents and clarify care wishes.",
+    "orange": "Mediation or professional review may be needed.",
+    "red": "Protect vulnerable adults, capacity, dignity, and dependents immediately."
+  },
+  "Safety_Protection_Tollgate": {
+    "red": "Safety override. Seek immediate appropriate help. Do not optimize relationship continuity."
+  },
+  "Parenting_Load_Tollgate": {
+    "green": "Continue current developmental pathway.",
+    "yellow": "Adjust load and protect siblings/couple floors.",
+    "orange": "Reduce or redesign opportunity load.",
+    "red": "Stop any pathway that endangers safety, health, or basic dignity."
+  }
+}

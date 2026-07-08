@@ -1,0 +1,51 @@
+﻿case_id,title,stage,domain,harm_level,impact_score,repair_score,learning_score,recurrence_count,safety_override,recommended_tollgate,summary
+CASE001,Delayed Reply Anxiety,New Relationship,Communication,1,20,55,60,0,false,Continue_Correct_Reconsider_Exit,Unclear texting expectations created anxiety
+CASE002,Unplanned Celebration Failure,Exclusivity,Effort,2,45,40,50,1,false,Continue_Correct_Reconsider_Exit,One partner failed to plan an agreed celebration
+CASE003,Ex Boundary Ambiguity,Exclusivity,Boundaries,3,70,25,35,1,false,Continue_Correct_Reconsider_Exit,Contact with ex lacked clarity and reassurance
+CASE004,Family Pressure Bypass,Family Integration,Family Interference,3,75,20,30,2,false,Continue_Correct_Reconsider_Exit,Family pressure bypassed couple decision rights
+CASE005,Gift Criticism Injury,Family Integration,Respect,2,55,35,45,1,false,Continue_Correct_Reconsider_Exit,Gift comparison caused dignity injury
+CASE006,Kitchen Help Failure,Marriage,Household,2,50,65,70,2,false,Continue_Correct_Reconsider_Exit,Partner watched struggle and did not help
+CASE007,Household Burden Skew,Marriage,Household,2,60,50,55,5,false,Continue_Correct_Reconsider_Exit,Chronic uneven burden emerged
+CASE008,Financial Secrecy,Marriage,Money,3,80,30,40,1,false,Divorce_or_Recovery_Tollgate,Unplanned concealed spending created trust injury
+CASE009,In-Law Triangulation,Marriage,Family Interference,3,70,35,45,3,false,Continue_Correct_Reconsider_Exit,Relatives became conflict audience
+CASE010,Affection Starvation,Marriage,Affection,2,60,40,40,4,false,Continue_Correct_Reconsider_Exit,Low affection and no repair conversation
+CASE011,Postpartum Abandonment,Parenting,Caregiving,4,90,25,30,1,false,Crisis_Mode_Tollgate,One partner withdrew during postpartum need
+CASE012,Gifted Child Overload,Parenting,Gifted Child,2,65,70,75,2,false,Parenting_Load_Tollgate,Opportunity path strained sibling fairness
+CASE013,Sibling Invisibility,Parenting,Sibling Fairness,2,60,55,60,3,false,Parenting_Load_Tollgate,Independent sibling received too little attention
+CASE014,Pet Care Capture,Expanded Household,Pet Care,2,55,45,50,4,false,Continue_Correct_Reconsider_Exit,Pet obligations became one-sided
+CASE015,Elder Care Load Shift,Expanded Household,Elder Care,2,70,50,55,4,false,Crisis_Mode_Tollgate,Elder care fell mostly on one partner
+CASE016,Career Relocation Sacrifice,Career,Career,2,65,60,65,1,false,Continue_Correct_Reconsider_Exit,One partner moved for another's career
+CASE017,Unemployment Shame Spiral,Career,Money,2,55,65,70,1,false,Crisis_Mode_Tollgate,Job loss created shame and withdrawal
+CASE018,Midlife Drift,Midlife,Lifestyle Drift,2,60,45,45,6,false,Crisis_Mode_Tollgate,Shared life narrowed into logistics
+CASE019,Digital Escape Pattern,Midlife,Lifestyle Drift,2,50,40,40,5,false,Continue_Correct_Reconsider_Exit,Phone use displaced connection
+CASE020,Emotional Affair Drift,Fidelity,Boundaries,4,90,20,25,1,false,Divorce_or_Recovery_Tollgate,External validation became secrecy
+CASE021,Physical Affair,Fidelity,Trust,4,95,15,20,1,false,Divorce_or_Recovery_Tollgate,Major fidelity breach occurred
+CASE022,Repeated Contempt,Conflict,Respect,4,85,20,20,8,false,Divorce_or_Recovery_Tollgate,Conflict style became degrading
+CASE023,Threat or Intimidation,Safety,Safety,5,100,0,0,1,true,Safety_Protection_Tollgate,Safety concern overrides ordinary scoring
+CASE024,Menopause Misread,Body Changes,Health,2,55,70,75,1,false,Continue_Correct_Reconsider_Exit,Body transition misread as rejection
+CASE025,Andropause Withdrawal,Body Changes,Health,2,55,65,70,1,false,Continue_Correct_Reconsider_Exit,Energy changes led to emotional distance
+CASE026,Health Crisis Support,Illness,Caregiving,1,40,85,90,0,false,Crisis_Mode_Tollgate,Partner showed up during illness
+CASE027,Insurance Gap,Money,Planning,2,65,55,60,1,false,Crisis_Mode_Tollgate,Household lacked protection planning
+CASE028,Mortgage Overreach,Money,Wealth,2,70,45,50,1,false,Crisis_Mode_Tollgate,Lifestyle expansion exceeded resilience
+CASE029,Spending Spike Distress,Money,Routine Signals,2,55,50,50,2,false,Continue_Correct_Reconsider_Exit,Distress spending emerged
+CASE030,Clutter Overload,Lifestyle,Home Environment,1,35,60,65,3,false,Continue_Correct_Reconsider_Exit,Home disorder signaled overload
+CASE031,No Shared Joy,Companionship,Kama,2,60,45,45,4,false,Continue_Correct_Reconsider_Exit,Shared life lost play and beauty
+CASE032,Volunteering Burnout,Community,Dharma,2,55,55,55,3,false,Continue_Correct_Reconsider_Exit,Service obligations exceeded capacity
+CASE033,Friend Distress Call Pileup,Social,Support Network,1,35,65,70,2,false,Continue_Correct_Reconsider_Exit,Support system signaled emotional overload
+CASE034,Neighbor Boundary Issue,Social,Boundaries,1,30,60,65,1,false,Continue_Correct_Reconsider_Exit,Neighbor obligations blurred boundaries
+CASE035,College Planning Conflict,Parenting,Education,2,65,55,60,2,false,Parenting_Load_Tollgate,Competitive child planning created conflict
+CASE036,Child Launch Anxiety,Parenting,Launch,1,45,70,75,1,false,Parenting_Load_Tollgate,Adult child transition unsettled parents
+CASE037,New Partner Entry,Recovery,Continuity,1,40,80,80,0,false,New_Partner_Entry_Tollgate,New partner needs continuity brief and rights
+CASE038,Predecessor Shadow,Recovery,New Partner,2,60,55,60,2,false,New_Partner_Entry_Tollgate,New partner felt compared to prior partner
+CASE039,Widowhood Companion Readiness,Recovery,Grief,1,45,75,75,0,false,New_Partner_Entry_Tollgate,Companionship considered after loss
+CASE040,Divorce Recovery Budget,Recovery,Money,2,65,70,70,1,false,Crisis_Mode_Tollgate,Temporary living standard reduction needed
+CASE041,War Displacement Shock,Crisis,Disaster,4,95,50,55,1,false,Crisis_Mode_Tollgate,External calamity destabilized household
+CASE042,Business Side Gig Risk,Money,Enterprise,2,65,55,60,1,false,Crisis_Mode_Tollgate,Side venture exposed household resources
+CASE043,Reverse Aging Reset,Renewal,Health,0,15,90,90,0,false,Continue_Correct_Reconsider_Exit,Couple rebuilt vitality routines
+CASE044,Spiritual Misalignment,Spirituality,Moksha,2,55,60,60,2,false,Continue_Correct_Reconsider_Exit,Meaning and lifestyle values diverged
+CASE045,Retirement Identity Loss,Aging,Identity,2,60,65,70,1,false,Crisis_Mode_Tollgate,Retirement destabilized role identity
+CASE046,Cognitive Decline Planning,Aging,Caregiving,3,80,70,75,1,false,Legacy_Transition_Tollgate,Capacity and dignity planning needed
+CASE047,Inheritance Conflict,Legacy,Wealth,3,75,55,60,1,false,Legacy_Transition_Tollgate,Legacy planning created family conflict
+CASE048,Grandchild Boundary,Legacy,Family Boundaries,1,40,70,75,1,false,Legacy_Transition_Tollgate,Grandparent role needed boundaries
+CASE049,End of Life Wishes,Aging,Dignity,1,45,85,90,0,false,Legacy_Transition_Tollgate,Care wishes clarified with compassion
+CASE050,Ancestral Wisdom Transfer,Legacy,Legacy,0,10,90,95,0,false,Legacy_Transition_Tollgate,Family wisdom and traditions transferred

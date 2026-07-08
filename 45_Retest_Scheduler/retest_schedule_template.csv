@@ -1,0 +1,6 @@
+﻿case_id,retest_days,review_owner,success_metric,status
+CASE001,14,participant_pair,clear communication cadence,pending
+CASE006,30,participant_pair,visible household initiative,pending
+CASE012,45,family_system,sibling fairness floor restored,pending
+CASE020,90,participant_pair,transparency and boundary repair sustained,pending
+CASE040,180,primary_person,stability budget maintained,pending
