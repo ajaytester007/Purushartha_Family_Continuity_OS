@@ -60,3 +60,10 @@ Ingest with consent → Normalize → Build timeline → Detect patterns → Sep
 ## Disclaimer
 
 This framework is educational decision support, not medical, legal, financial, mental-health, child-development, or emergency advice. In danger, coercive control, threats, violence, stalking, or child-safety concerns, prioritize qualified local support and immediate safety over relationship optimization.
+
+## Live Streamlit App
+
+The interactive MVP is available here:
+
+https://purusharthafamilycontinuityos-jakkkbzwpuv5pxapptc5up2.streamlit.app/
+
