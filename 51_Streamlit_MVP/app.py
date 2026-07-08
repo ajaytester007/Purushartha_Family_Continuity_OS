@@ -25,6 +25,8 @@ GRAPH_NODES = ROOT / "68_Event_Graph_Engine" / "event_graph_nodes.csv"
 GRAPH_EDGES = ROOT / "68_Event_Graph_Engine" / "event_graph_edges.csv"
 SCENARIO_PATH = ROOT / "122_Scenario_Simulator" / "scenario_seed.csv"
 SCENARIO_REPORT_PATH = ROOT / "124_Scenario_Reports" / "scenario_comparison_report_v2_9.md"
+V3_CAPABILITY_MATRIX = ROOT / "130_Capability_Matrix" / "v3_0_capability_matrix.csv"
+V3_RELEASE_SUMMARY = ROOT / "129_Release_Dashboard" / "v3_0_release_summary.md"
 GENERATED_REPORT_DIR = ROOT / "92_Generated_Reports"
 WORKBENCH_MODE = os.environ.get("PURUSHARTHA_WORKBENCH_MODE", "Public Demo")
 PRIVATE_REPORT_DIR = ROOT / "114_Private_Reports"
@@ -179,6 +181,7 @@ else:
     st.error("Private Local Mode: keep outputs local; do not publish private reports.")
 
 tabs = st.tabs([
+    "v3.0 Suite",
     "Dashboard",
     "Event Entry",
     "Cases",
@@ -464,3 +467,16 @@ with tabs[-2]:
             st.markdown(report)
             st.download_button("Download Scenario Report", report, "scenario_comparison_report_v2_9.md", "text/markdown")
         st.warning("Scenario simulation is decision support only. Safety and professional review override optimization.")
+
+
+with tabs[0]:
+    st.header("v3.0 Family Continuity Intelligence Suite Milestone")
+    st.success("v3.0 integrates knowledgebase, cases, reports, consent governance, graph, SCD2 state, scenario simulation, public demo lock, and private local mode.")
+    matrix = load_csv(V3_CAPABILITY_MATRIX)
+    if not matrix.empty:
+        st.subheader("Capability Matrix")
+        st.dataframe(matrix, use_container_width=True)
+        st.bar_chart(matrix.groupby("status").size())
+    if V3_RELEASE_SUMMARY.exists():
+        st.subheader("Release Summary")
+        st.markdown(V3_RELEASE_SUMMARY.read_text(encoding="utf-8"))

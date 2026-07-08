@@ -1,0 +1,12 @@
+﻿capability,status,public_demo_ready,private_local_ready,notes
+Knowledgebase,Complete,Yes,Yes,Relationship etiquette and life journey books
+Case Engine,Complete,Yes,Yes,Synthetic case reasoning
+Reports Cockpit,Complete,Yes,Yes,Manifest and report previews
+Report Builder,Complete,Yes,Yes,Markdown report generation
+Consent Ledger,Foundation,Demo,Yes,Cloud persistence limited
+Evidence Governance,Foundation,Demo,Yes,Requires local/private use for real data
+Graph Explorer,Complete,Yes,Yes,Filters and Mermaid export
+SCD2 State Editor,Foundation,Demo,Yes,Controlled state transitions
+Scenario Simulator,Foundation,Yes,Yes,Path comparison model
+Public Demo Lock,Foundation,Yes,N/A,Synthetic-only online safety
+Private Local Mode,Foundation,N/A,Yes,Do not commit private data
