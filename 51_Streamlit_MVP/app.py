@@ -23,6 +23,8 @@ SCD2_PATH = ROOT / "62_SCD2_State" / "relationship_state_seed.csv"
 SCD2_AUDIT_PATH = ROOT / "106_SCD2_State_Editor" / "state_transition_audit.csv"
 GRAPH_NODES = ROOT / "68_Event_Graph_Engine" / "event_graph_nodes.csv"
 GRAPH_EDGES = ROOT / "68_Event_Graph_Engine" / "event_graph_edges.csv"
+SCENARIO_PATH = ROOT / "122_Scenario_Simulator" / "scenario_seed.csv"
+SCENARIO_REPORT_PATH = ROOT / "124_Scenario_Reports" / "scenario_comparison_report_v2_9.md"
 GENERATED_REPORT_DIR = ROOT / "92_Generated_Reports"
 WORKBENCH_MODE = os.environ.get("PURUSHARTHA_WORKBENCH_MODE", "Public Demo")
 PRIVATE_REPORT_DIR = ROOT / "114_Private_Reports"
@@ -187,6 +189,7 @@ tabs = st.tabs([
     "Graph Explorer",
     "SCD2 State Editor",
     "Governance",
+    "Scenario Simulator",
     "Consent Ledger"
 ])
 
@@ -419,7 +422,8 @@ with tabs[9]:
     st.markdown("- Use synthetic data publicly.\n- Use real data only in private/local mode with explicit consent.\n- Safety override supersedes relationship optimization.")
 
 with tabs[10]:
-    st.header("Consent Ledger")
+    st.header("Scenario Simulator",
+    "Consent Ledger")
     consent = load_csv(CONSENT_PATH)
     if consent.empty:
         consent = pd.DataFrame(columns=["consent_id","participant","record_id","status","allowed_viewers","allowed_analysis","retention_until","revoked_at"])
@@ -433,3 +437,30 @@ with tabs[10]:
 
 
 
+
+
+with tabs[-2]:
+    st.header("Scenario Simulator")
+    scenarios = load_csv(SCENARIO_PATH)
+    if scenarios.empty:
+        st.warning("Scenario seed not found. Run v2.9 full flow.")
+    else:
+        st.subheader("Scenario Comparison")
+        st.dataframe(scenarios, use_container_width=True)
+        path = st.selectbox("Select path", scenarios["path"])
+        row = scenarios[scenarios["path"] == path].iloc[0]
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Health Delta", row["relationship_health_delta"])
+        c2.metric("Burden Delta", row["burden_skew_delta"])
+        c3.metric("Continuity", row["continuity_score"])
+        c4.metric("Risk", row["risk_score"])
+        st.info(row["recommendation"])
+        st.subheader("Tradeoff Chart")
+        chart = scenarios[["path","continuity_score","risk_score","repair_effort"]].set_index("path")
+        st.bar_chart(chart)
+        if SCENARIO_REPORT_PATH.exists():
+            report = SCENARIO_REPORT_PATH.read_text(encoding="utf-8")
+            st.subheader("Scenario Report")
+            st.markdown(report)
+            st.download_button("Download Scenario Report", report, "scenario_comparison_report_v2_9.md", "text/markdown")
+        st.warning("Scenario simulation is decision support only. Safety and professional review override optimization.")

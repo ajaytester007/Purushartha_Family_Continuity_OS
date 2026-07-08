@@ -1,0 +1,6 @@
+﻿scenario_id,path,relationship_health_delta,burden_skew_delta,repair_effort,continuity_score,risk_score,retest_days,recommendation
+SCN001,Continue,5,-3,25,82,28,30,Continue with light monitoring
+SCN002,Correct,14,-12,60,88,22,14,Best repair-and-grow path if both participate
+SCN003,Reconsider,-4,5,35,62,48,21,Use if repeated non-repair continues
+SCN004,Pause,-8,-2,20,55,42,14,Use for cooling-off and safety review
+SCN005,Exit,-20,-18,80,50,65,7,Use if safety dignity or repeated harm thresholds are crossed
