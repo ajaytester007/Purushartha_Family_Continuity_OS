@@ -1,0 +1,2 @@
+﻿report_id,created_at,summary,fidelity_score,prospect_score,recommended_action,retest_days,report_path
+GR001,2026-01-01T00:00:00Z,Synthetic grievance,75,78,Correct and retest,14,synthetic
