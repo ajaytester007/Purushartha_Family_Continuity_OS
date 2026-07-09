@@ -861,3 +861,137 @@ st.markdown('- Convert checklist categories into levels.\n- Let partners and tru
 st.subheader('iPhone Home Screen')
 st.markdown('Open the GitHub Pages mobile shell, then use Safari Share → Add to Home Screen.')
 # === END V4.1 COMPATIBILITY CHECKLIST REQUIREMENTS ===
+
+
+# === V4.2 INTERACTIVE JOURNEY ACTIVATION ===
+def band_v42(score):
+    if score >= 85: return '🌟 Strong readiness — keep building with joy and consistency.'
+    if score >= 70: return '🌿 Promising — choose growth quests and retest.'
+    if score >= 55: return '🛠️ Needs correction — focus on the lowest area for 7-14 days.'
+    if score >= 40: return '🕊️ Pause and review — reduce pressure and clarify gaps.'
+    return '🛑 High risk — safety, dignity, and repeated non-repair must be reviewed.'
+
+def prompt_v42(low_area, stage):
+    prompts={
+        'Primary Partners':'What is one habit that would help both partners feel chosen and respected?',
+        'Parents':'What family boundary would help the couple grow without pressure?',
+        'Siblings and Friends':'Who in the trusted circle lifts the relationship, and who adds noise?',
+        'Modern Life':'What lower-cost or lower-stress substitution could preserve excitement?',
+        'Role Play':'What real-life episode can we practice before pressure arrives?',
+        'Milestone':'What must be true before moving to the wedding launch gate?'
+    }
+    return prompts.get(low_area, 'What small action would raise tomorrow’s relationship score?')
+
+st.markdown('---')
+st.header('🎮 v4.2 Interactive Journey Activation')
+st.caption('Turn compatibility checklists into chapters, XP, health reports, and a game-style roadmap.')
+
+if 'journey_xp_v42' not in st.session_state:
+    st.session_state['journey_xp_v42']=0
+if 'completed_chapters_v42' not in st.session_state:
+    st.session_state['completed_chapters_v42']=[]
+
+couple_name_v42=st.text_input('Couple / Journey Name', value='Our Compatibility Quest', key='couple_name_v42')
+stage_v42=st.selectbox('Journey Stage', ['Just Starting','Dating','Engaged','Married','Parenting','Recovery','Makeover'], key='stage_v42')
+avatar_v42=st.selectbox('Choose Avatar Style', ['🌸 Lotus Guides','🧞 Genie Quest','🦚 Peacock Path','🛕 Temple Bells','🚀 Modern Makers'], key='avatar_v42')
+theme_v42=st.selectbox('Color Theme Feeling', ['Royal Purple','Rose Gold','Temple Sunrise','Calm Ocean','Forest Renewal'], key='theme_v42')
+
+cards_v42=[
+('Preserve Strength','Primary Partners','Name one relationship strength worth protecting',5),
+('Shared Direction','Primary Partners','Rate shared life direction',5),
+('Communication Grove','Primary Partners','Rate calm communication under pressure',5),
+('Family Bridge','Parents','Rate respectful family boundary support',5),
+('Trusted Circle','Siblings and Friends','Rate trusted-circle encouragement',4),
+('Budget Mountain','Modern Life','Rate cost and logistics feasibility',5),
+('Distance Crossing','Modern Life','Rate distance travel or relocation feasibility',4),
+('Recovery Rest Stop','Modern Life','Rate sickness and recovery support',4),
+('Happiness Garden','Primary Partners','Rate joy humor affection and companionship',4),
+('Role-Play Arena','Role Play','Rate teamwork during a practical episode',5),
+('Repair Forge','Role Play','Rate apology correction and retest behavior',5),
+('Wedding Launch Gate','Milestone','Rate readiness for wedding union launch',5),
+]
+
+st.subheader('✅ Checklist Cards')
+scores_v42=[]
+weights_v42=[]
+areas_v42=[]
+for idx,(chapter,area,prompt,weight) in enumerate(cards_v42):
+    with st.expander(f'{idx+1}. {chapter} — {area}', expanded=(idx<3)):
+        st.write(prompt)
+        score=st.slider('Score',0,100,70,key=f'card_score_v42_{idx}')
+        reflection=st.text_area('Reflection / episode note', key=f'card_reflection_v42_{idx}', placeholder='Optional sanitized note...')
+        complete=st.checkbox('Chapter task completed', key=f'card_complete_v42_{idx}')
+        if complete and chapter not in st.session_state['completed_chapters_v42']:
+            st.session_state['completed_chapters_v42'].append(chapter)
+            st.session_state['journey_xp_v42'] += weight*5
+        scores_v42.append(score)
+        weights_v42.append(weight)
+        areas_v42.append(area)
+
+weighted_v42=round(sum(s*w for s,w in zip(scores_v42,weights_v42))/sum(weights_v42),1)
+low_idx_v42=min(range(len(scores_v42)), key=lambda i:scores_v42[i])
+high_idx_v42=max(range(len(scores_v42)), key=lambda i:scores_v42[i])
+low_area_v42=areas_v42[low_idx_v42]
+high_chapter_v42=cards_v42[high_idx_v42][0]
+stars_v42='⭐'*max(1,min(5,int(weighted_v42/20)))
+
+st.subheader('📊 Compatibility Health Check')
+c1,c2,c3=st.columns(3)
+c1.metric('Compatibility Readiness', f'{weighted_v42}/100')
+c2.metric('Journey XP', st.session_state['journey_xp_v42'])
+c3.metric('Stars', stars_v42)
+st.info(band_v42(weighted_v42))
+st.success(f'Strongest chapter right now: {high_chapter_v42}')
+st.warning(f'Next coaching focus: {low_area_v42}')
+
+st.subheader('💌 Dynamic Feed Forward Prompt')
+st.write(prompt_v42(low_area_v42, stage_v42))
+
+st.subheader('🗺️ Roadmap with Signposts')
+road_v42=['First Chemistry','Communication Grove','Family Bridge','Budget Mountain','Distance Crossing','Recovery Rest Stop','Role-Play Arena','Wedding Launch Gate','Household Village','Renewal Garden']
+road_text_v42=' → '.join(['✅ '+x if x in st.session_state['completed_chapters_v42'] else '📍 '+x for x in road_v42])
+st.markdown(road_text_v42)
+
+if st.button('Generate Compatibility Health Report', key='generate_report_v42'):
+    report=f'''# Compatibility Health Report
+
+## Journey
+{couple_name_v42}
+
+## Stage
+{stage_v42}
+
+## Avatar / Theme
+{avatar_v42} / {theme_v42}
+
+## Compatibility Readiness
+{weighted_v42}/100
+
+## Readiness Band
+{band_v42(weighted_v42)}
+
+## Strongest Chapter
+{high_chapter_v42}
+
+## Coaching Focus
+{low_area_v42}
+
+## Dynamic Prompt
+{prompt_v42(low_area_v42, stage_v42)}
+
+## XP and Stars
+XP: {st.session_state['journey_xp_v42']}  
+Stars: {stars_v42}
+
+## Completed Chapters
+{', '.join(st.session_state['completed_chapters_v42']) if st.session_state['completed_chapters_v42'] else 'None yet'}
+
+## Next Action
+Complete one small quest in the lowest scoring area, then retest in 7-14 days.
+
+## Safety Rule
+Safety and dignity override relationship optimization.
+'''
+    st.markdown(report)
+    st.download_button('Download Compatibility Health Report', report, 'compatibility_health_report.md', 'text/markdown', key='download_report_v42')
+# === END V4.2 INTERACTIVE JOURNEY ACTIVATION ===

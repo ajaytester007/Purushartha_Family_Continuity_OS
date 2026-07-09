@@ -1,0 +1,13 @@
+﻿card_id,chapter,category,prompt,weight
+C001,Preserve Strength,Primary Partners,Name one relationship strength worth protecting,5
+C002,Shared Direction,Primary Partners,Rate your shared life direction,5
+C003,Communication,Primary Partners,Rate your calm communication under pressure,5
+C004,Family Fit,Parents,Rate family boundary support,5
+C005,Trusted Circle,Siblings and Friends,Rate trusted-circle encouragement,4
+C006,Budget Logistics,Modern Life,Rate cost and logistics feasibility,5
+C007,Distance Logistics,Modern Life,Rate distance travel and relocation feasibility,4
+C008,Health Recovery,Modern Life,Rate sickness and recovery support capacity,4
+C009,Happiness Quotient,Primary Partners,Rate joy humor affection and companionship,4
+C010,Role Play,Role Play,Rate how well the couple handled a practical episode,5
+C011,Repair Maturity,Role Play,Rate apology correction and retest behavior,5
+C012,Wedding Launch,Milestone,Rate readiness for wedding union launch,5
