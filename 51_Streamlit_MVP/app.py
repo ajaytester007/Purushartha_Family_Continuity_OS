@@ -1399,3 +1399,133 @@ If scores dip beyond repair because of safety, dignity, repeated non-repair, coe
         st.markdown(report)
         st.download_button('Download Two-Family Advisory Report', report, 'two_family_advisory_report.md', 'text/markdown', key='download_advisory_report_v46')
 # === END V4.6 CHECKLIST INTAKE LIFE COACH ===
+
+
+# === V4.7 DOCX QUESTIONNAIRE INTAKE ===
+def q_dimension_v47(section):
+    s=(section or '').upper()[:1]
+    mapping={'A':'Dharma / Ahimsa','B':'Class / Character','C':'Emotional Maturity','D':'Family Ecology','E':'Artha / Finances','F':'Partnership Responsibility','G':'Moksha / Individual Identity','H':'Conflict and Crisis','I':'Wedding and Gift Expectations','J':'Lifestyle Compatibility','K':'Milestone Readiness'}
+    return mapping.get(s,'General Compatibility')
+
+def q_answer_score_v47(line):
+    low=line.lower()
+    if 'yes' in low and 'no' not in low: return 80
+    if 'no' in low and 'yes' not in low: return 35
+    if 'other' in low or 'partial' in low or 'maybe' in low: return 55
+    if '?' in line: return None
+    return None
+
+def q_band_v47(score):
+    if score>=80: return 'Strong signal — preserve and reinforce.'
+    if score>=65: return 'Mostly workable — mend specific gaps.'
+    if score>=50: return 'Incubate and retest — do not rush milestones.'
+    if score>=35: return 'High caution — structured mending required.'
+    return 'Exit-review risk — forcing the relationship may harm dignity.'
+
+def q_playbook_v47(dim):
+    d=dim.lower()
+    if 'family' in d or 'wedding' in d or 'gift' in d: return 'Family Reset: clarify boundaries, gifts, expectations, tone, and public milestone readiness.'
+    if 'emotional' in d or 'conflict' in d: return 'Repair Proof: apology, correction, calmer retest, and no repeated escalation.'
+    if 'artha' in d or 'finance' in d: return 'Logistics Reality: budget, travel, distance, work pressure, and responsibility plan.'
+    if 'kama' in d or 'lifestyle' in d: return 'Happiness Design: low-cost joy, companionship, food/lifestyle fit, and daily rhythm.'
+    if 'moksha' in d or 'identity' in d: return 'Identity Respect: preserve independence, dignity, growth, and freedom from control.'
+    return 'Dharma Reset: truth, dignity, accountability, and non-harmful communication.'
+
+st.markdown('---')
+st.header('📄 v4.7 DOCX Questionnaire Intake + Classy Values Analyzer')
+st.caption('Upload or paste an anonymous completed compatibility questionnaire. The app extracts sections, scores answer patterns, and advises both families.')
+st.warning('Use anonymous/pilot-safe documents only. Do not upload documents containing real names, phone numbers, addresses, or private identifiers to a public demo.')
+
+uploaded_v47=st.file_uploader('Upload completed DOCX questionnaire', type=['docx'], key='docx_upload_v47')
+pasted_v47=st.text_area('Or paste questionnaire text here', height=220, key='pasted_questionnaire_v47')
+text_v47=''
+if uploaded_v47 is not None:
+    try:
+        from docx import Document
+        import io
+        doc=Document(io.BytesIO(uploaded_v47.read()))
+        text_v47='\n'.join([p.text for p in doc.paragraphs if p.text.strip()])
+        st.success('DOCX extracted successfully.')
+    except Exception as e:
+        st.error(f'DOCX extraction failed: {e}. Try installing python-docx or paste the text manually.')
+elif pasted_v47.strip():
+    text_v47=pasted_v47
+
+if text_v47:
+    lines_v47=[ln.strip() for ln in text_v47.splitlines() if ln.strip()]
+    current_section_v47='General'
+    extracted_v47=[]
+    for ln in lines_v47:
+        if len(ln)>=2 and ln[0].isalpha() and (ln[1]=='.' or ln[1]==')'):
+            current_section_v47=ln[:1].upper()
+        score=q_answer_score_v47(ln)
+        if score is not None:
+            extracted_v47.append({'section':current_section_v47,'dimension':q_dimension_v47(current_section_v47),'line':ln,'score':score})
+    st.subheader('Extracted Intake Summary')
+    st.metric('Detected answer rows', len(extracted_v47))
+    if extracted_v47:
+        dims={}
+        for r in extracted_v47:
+            dims.setdefault(r['dimension'],[]).append(r['score'])
+        dim_scores={k:round(sum(v)/len(v),1) for k,v in dims.items()}
+        avg_v47=round(sum(dim_scores.values())/len(dim_scores),1)
+        low_dim_v47=min(dim_scores, key=dim_scores.get)
+        high_dim_v47=max(dim_scores, key=dim_scores.get)
+        st.metric('Questionnaire Readiness Score', f'{avg_v47}/100')
+        st.info(q_band_v47(avg_v47))
+        st.success(f'Strongest dimension: {high_dim_v47} ({dim_scores[high_dim_v47]}/100)')
+        st.warning(f'Mending focus: {low_dim_v47} ({dim_scores[low_dim_v47]}/100)')
+        st.subheader('Dimension Scores')
+        for k,v in dim_scores.items():
+            st.write(f'**{k}:** {v}/100 — {q_band_v47(v)}')
+        st.subheader('Recommended Life-Coach Playbook')
+        st.success(q_playbook_v47(low_dim_v47))
+        if avg_v47<45 or dim_scores[low_dim_v47]<35:
+            st.error('Beyond-repair caution: create an exit-review report unless immediate visible repair restores dignity and safety.')
+        elif avg_v47<60:
+            st.warning('Incubation advised: do not move to wedding/public milestone until mending focus improves.')
+        else:
+            st.info('Mending path available: use the playbook and retest after visible behavior change.')
+        with st.expander('Evidence lines used for scoring', expanded=False):
+            for r in extracted_v47[:80]:
+                st.write(f"- {r['dimension']} | {r['score']}/100 | {r['line']}")
+        if st.button('Generate Questionnaire Intake Report', key='generate_questionnaire_report_v47'):
+            score_lines='\n'.join([f'- {k}: {v}/100 — {q_band_v47(v)}' for k,v in dim_scores.items()])
+            evidence_lines='\n'.join([f"- {r['dimension']} | {r['score']}/100 | {r['line']}" for r in extracted_v47[:60]])
+            report=f'''# Questionnaire Intake Report
+
+## Overall Readiness
+{avg_v47}/100
+
+## Recommendation
+{q_band_v47(avg_v47)}
+
+## Strongest Dimension
+{high_dim_v47}: {dim_scores[high_dim_v47]}/100
+
+## Mending Focus
+{low_dim_v47}: {dim_scores[low_dim_v47]}/100
+
+## Recommended Playbook
+{q_playbook_v47(low_dim_v47)}
+
+## Dimension Scores
+{score_lines}
+
+## Guidance to Couple
+Own the repair directly, show visible behavior change, and do not rely on families to carry the relationship.
+
+## Guidance to Both Families
+Support dignity, reduce emotional escalation, avoid public scorekeeping, and allow structured retest before milestone movement.
+
+## Evidence Lines
+{evidence_lines}
+
+## Exit Rule
+If safety, dignity, repeated non-repair, coercion, or no-hope patterns dominate, use a dignified exit report and preserve the maturity gained.
+'''
+            st.markdown(report)
+            st.download_button('Download Questionnaire Intake Report', report, 'questionnaire_intake_report.md', 'text/markdown', key='download_questionnaire_report_v47')
+    else:
+        st.warning('Text was extracted, but no Yes/No/Other style answer rows were detected. Paste completed answer lines or use the next version for richer table parsing.')
+# === END V4.7 DOCX QUESTIONNAIRE INTAKE ===

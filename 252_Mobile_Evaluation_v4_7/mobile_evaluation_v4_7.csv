@@ -1,0 +1,7 @@
+﻿feature,check_from_iphone,pass_criteria
+DOCX Upload,Streamlit v4.7 section,Can upload DOCX questionnaire
+Extraction,Streamlit output,Shows extracted sections/questions
+Scoring,Streamlit output,Shows dimension scores
+Inference,Streamlit output,Shows mending and milestone guidance
+Report,Download button,Downloads questionnaire intake report
+Mobile Shell,Home Screen icon,Shows v4.7 update after Pages deploy
