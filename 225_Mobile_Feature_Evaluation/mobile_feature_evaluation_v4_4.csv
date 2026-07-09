@@ -1,0 +1,10 @@
+﻿feature,where_to_check,pass_criteria
+Mobile shell,GitHub Pages mobile.html,Opens on iPhone and can be added to Home Screen
+Streamlit workbench,Open Interactive Workbench button,Loads from mobile shell
+Anonymous pilot lab,Streamlit v4.4 section,Can enter pilot code and episode
+Multi-rater engine,Streamlit v4.4 sliders,Each role score moves independently
+Disagreement gap,Streamlit decision dashboard,Gap changes based on role ratings
+Decision maze,Streamlit maze expander,Shows all maze nodes and questions
+Perspective pivots,Streamlit perspective section,Shows partner family seer and support-system angles
+Decision report,Download button,Downloads anonymous report
+Safety guardrail,Report and screen,Does not encourage unsafe continuation
