@@ -1,0 +1,61 @@
+from pathlib import Path
+app=Path("51_Streamlit_MVP/app.py")
+text=app.read_text(encoding="utf-8-sig").replace("\ufeff","")
+marker="# === V4.5 SACRED MAZE ENGINE ==="
+if marker in text:
+    print("v4.5 patch already present")
+    raise SystemExit(0)
+lines=[
+"# === V4.5 SACRED MAZE ENGINE ===",
+"def sacred_maze_direction_v45(dharma, artha, kama, moksha, drama):",
+"    score=round(dharma*.30+artha*.25+kama*.20+moksha*.25-drama*.15,1)",
+"    if drama>=75: return score,'Pause at the Dharma Mirror: de-escalation is required before continuing.'",
+"    if score>=80: return score,'Proceed to the next tollgate with a small sadhana quest.'",
+"    if score>=65: return score,'Incubate: continue, but retest the weakest quadrant.'",
+"    if score>=50: return score,'Pause and repair: the maze reveals unresolved loops.'",
+"    return score,'Exit Review: preserve the lesson and avoid forcing the path.'",
+"",
+"def sadhana_v45(focus):",
+"    quests={'Dharma':'Truth Sadhana: state one fact, one feeling, and one dignified request.','Artha':'Artha Sadhana: create one realistic cost, distance, time, or responsibility plan.','Kama':'Kama Sadhana: create one low-cost joyful bonding moment.','Moksha':'Moksha Sadhana: name how each person can grow without control.','Family':'Boundary Sadhana: define one respectful family boundary.','Repair':'Repair Sadhana: offer one apology, correction, or retest behavior.'}",
+"    return quests.get(focus, quests['Dharma'])",
+"",
+"st.markdown('---')",
+"st.header('🌀 v4.5 Sacred Maze + Mind Map Game Engine')",
+"st.caption('Optional symbolic layer for navigating relationship decision points through perspectives, Purushartha quadrants, tollgates, and sadhana quests.')",
+"st.warning('Symbolic mode is metaphorical and optional. It is not diagnosis, certainty, or spiritual judgment.')",
+"skin_v45=st.selectbox('Journey Skin', ['Shiva Karana Path','Ganesha Obstacle Path','Devi Shakti Path','Nature River Path','Secular Compass Path'], key='skin_v45')",
+"episode_v45=st.text_area('Maze Episode', placeholder='Describe the anonymous episode or decision point...', key='episode_v45')",
+"focus_v45=st.selectbox('Primary Focus', ['Dharma','Artha','Kama','Moksha','Family','Repair'], key='focus_v45')",
+"",
+"st.subheader('🧭 Maze Path')",
+"maze_nodes_v45=[('Entry Sankalpa','What intention are we entering with?'),('Self Chamber','What did I intend and fear?'),('Partner Chamber','What might my partner have experienced?'),('Family Gate','What family expectation appeared?'),('Artha Corridor','What practical constraint mattered?'),('Kama Garden','What joy is being preserved or lost?'),('Dharma Mirror','What is fair, truthful, and dignified?'),('Moksha Window','What helps both souls mature?'),('Repair Bridge','What visible repair or boundary is needed?'),('Tollgate','Continue, incubate, pause, or exit?')]",
+"for i,(node,q) in enumerate(maze_nodes_v45):",
+"    with st.expander(f'{i+1}. {node}', expanded=(i<2)):",
+"        st.write(q)",
+"        st.text_area('Maze reflection', key=f'maze_reflection_v45_{i}', placeholder='Optional anonymous note...')",
+"",
+"st.subheader('🕉️ Quadrant + Drama Inputs')",
+"c1,c2,c3,c4,c5=st.columns(5)",
+"with c1: dharma_v45=st.slider('Dharma',0,100,75,key='dharma_v45')",
+"with c2: artha_v45=st.slider('Artha',0,100,70,key='artha_v45')",
+"with c3: kama_v45=st.slider('Kama',0,100,75,key='kama_v45')",
+"with c4: moksha_v45=st.slider('Moksha',0,100,70,key='moksha_v45')",
+"with c5: drama_v45=st.slider('Drama Load',0,100,35,key='drama_v45')",
+"maze_score_v45,maze_direction_v45=sacred_maze_direction_v45(dharma_v45,artha_v45,kama_v45,moksha_v45,drama_v45)",
+"st.metric('Maze Readiness', f'{maze_score_v45}/100')",
+"st.info(maze_direction_v45)",
+"st.success(sadhana_v45(focus_v45))",
+"st.subheader('🗺️ Mind Map Text View')",
+"mind_map_v45='Entry Sankalpa → Self Chamber / Partner Chamber → Family Gate → Artha Corridor / Kama Garden → Dharma Mirror → Moksha Window → Repair Bridge → Tollgate'",
+"st.markdown(mind_map_v45)",
+"st.subheader('🔔 Chakra / Tollgate Metaphor')",
+"tollgate_v45=st.selectbox('Current Tollgate', ['Root: Safety','Sacral: Joy','Solar Plexus: Responsible Will','Heart: Compassion','Throat: Truth','Third Eye: Insight','Crown: Meaning'], key='tollgate_v45')",
+"st.write('Current symbolic tollgate:', tollgate_v45)",
+"if st.button('Generate Sacred Maze Report', key='generate_maze_report_v45'):",
+"    report=f'''# Sacred Maze Report\\n\\n## Journey Skin\\n{skin_v45}\\n\\n## Episode\\n{episode_v45 or 'Not supplied'}\\n\\n## Focus\\n{focus_v45}\\n\\n## Tollgate\\n{tollgate_v45}\\n\\n## Maze Readiness\\n{maze_score_v45}/100\\n\\n## Direction\\n{maze_direction_v45}\\n\\n## Sadhana Quest\\n{sadhana_v45(focus_v45)}\\n\\n## Mind Map\\n{mind_map_v45}\\n\\n## Guardrail\\nSymbolic mode is metaphorical and optional. Safety and dignity override relationship optimization.'''",
+"    st.markdown(report)",
+"    st.download_button('Download Sacred Maze Report', report, 'sacred_maze_report.md', 'text/markdown', key='download_maze_report_v45')",
+"# === END V4.5 SACRED MAZE ENGINE ===",
+]
+app.write_text(text+'\n\n'+'\n'.join(lines)+'\n', encoding='utf-8')
+print('v4.5 Streamlit patch complete.')

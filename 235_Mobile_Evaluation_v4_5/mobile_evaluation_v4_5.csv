@@ -1,0 +1,8 @@
+﻿feature,check_from_iphone,pass_criteria
+Sacred Maze Lab,Streamlit v4.5 section,User can select symbolic skin and navigate maze nodes
+Mind Map,Streamlit v4.5 section,Path summary is visible
+Sadhana Quest,Streamlit v4.5 section,Quest changes based on selected focus
+Tollgate,Streamlit v4.5 section,User receives continue/incubate/pause/exit direction
+Mobile Shell,Home Screen icon,Shows v4.5 Sacred Maze update after Pages deploy
+Report,Download button,Downloads symbolic maze report
+Guardrail,Screen text,Symbolic layer is optional and metaphorical

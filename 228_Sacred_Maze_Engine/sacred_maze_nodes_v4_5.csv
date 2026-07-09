@@ -1,0 +1,11 @@
+﻿node_id,node_name,node_type,next_nodes,question
+N001,Entry Sankalpa,Start,N002|N003,What intention are we entering the maze with?
+N002,Self Chamber,Perspective,N004,What did I intend and what did I fear?
+N003,Partner Chamber,Perspective,N004,What might my partner have experienced?
+N004,Family Gate,System,N005|N006,What family expectation or protection instinct appeared?
+N005,Artha Corridor,Constraint,N007,What money time distance health or logistics constraint mattered?
+N006,Kama Garden,Bonding,N007,What joy affection or companionship is being preserved or lost?
+N007,Dharma Mirror,Truth,N008,What is the fair truthful dignified action?
+N008,Moksha Window,Freedom,N009,What choice helps both souls mature rather than shrink?
+N009,Repair Bridge,Action,N010,What visible repair or boundary is needed?
+N010,Tollgate,Milestone,,Continue incubate pause or exit?
