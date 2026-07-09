@@ -1,0 +1,13 @@
+﻿rating_id,dimension,question,role,weight
+PR001,Dharma,Do both partners act with fairness truthfulness restraint and dignity?,Partner,5
+PR002,Artha,Can the partnership survive budget logistics work pressure and distance?,Partner,5
+PR003,Kama,Is there joy affection companionship attraction and emotional warmth?,Partner,4
+PR004,Moksha,Does the relationship support freedom growth peace and inner maturity?,Partner,4
+FR001,Family Ecology,Do parents support without controlling the couple?,Family,5
+FR002,Family Ecology,Can both families handle rituals gifts finances and expectations maturely?,Family,4
+FR003,Family Ecology,Is the trusted circle reducing drama rather than amplifying it?,Trusted Circle,4
+ER001,Emotional Safety,Can emotional dramas de-escalate without humiliation or coercion?,Partner,5
+ER002,Repair,Can both partners apologize correct and retest behavior?,Partner,5
+ER003,Trauma Bond Caution,Are repeated hurt-repair cycles creating unhealthy attachment?,Seer,5
+MR001,Moment of Truth,Did the couple handle a difficult episode with maturity?,Seer,5
+MR002,Wedding Launch,Is the relationship ready for a public family union milestone?,Seer,5

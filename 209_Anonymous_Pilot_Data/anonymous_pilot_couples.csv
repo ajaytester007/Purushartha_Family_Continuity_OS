@@ -1,0 +1,4 @@
+﻿pilot_id,couple_code,stage,partner_a_alias,partner_b_alias,family_a_alias,family_b_alias,privacy_mode
+PILOT001,LOTUS-001,Engaged,Partner-A,Partner-B,Family-A,Family-B,Anonymous
+PILOT002,PEACOCK-002,Dating,Partner-A,Partner-B,Family-A,Family-B,Anonymous
+PILOT003,RIVER-003,Makeover,Partner-A,Partner-B,Family-A,Family-B,Anonymous

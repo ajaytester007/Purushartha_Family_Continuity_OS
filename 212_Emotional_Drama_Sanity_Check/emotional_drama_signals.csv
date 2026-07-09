@@ -1,0 +1,9 @@
+﻿signal_id,signal_name,description,weight
+ED001,Escalation Spike,Conflict becomes louder faster or more public than needed,5
+ED002,Humiliation Risk,One side feels shamed cornered or publicly reduced,5
+ED003,Triangulation,Parents friends or siblings amplify rather than clarify,4
+ED004,Withdrawal Freeze,One partner shuts down and cannot participate,4
+ED005,Repair Attempt,Someone offers apology clarification correction or reassurance,-5
+ED006,Reality Check,Facts are separated from feelings and assumptions,-4
+ED007,Trauma Loop,Repeated hurt-repair-high attachment cycle appears,5
+ED008,Boundaries Stated,Healthy boundary is stated without cruelty,-4
