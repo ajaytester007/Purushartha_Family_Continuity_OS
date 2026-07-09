@@ -649,7 +649,7 @@ with tabs[1]:
     impact = st.text_area("Emotional Impact", height=100)
     desired_change = st.text_area("Desired Change", height=100)
     severity = st.slider("Severity", 0, 5, 2, key="grievance_severity")
-    recurrence = st.slider("Repeated Pattern Count", 0, 10, 1, key="consult_repeated_pattern_count")
+    recurrence = st.slider("Repeated Pattern Count", 0, 10, 1, key="consult_repeated_pattern_count_2")
     accountability = st.slider("Partner Accountability Shown", 0, 10, 5, key="grievance_partner_accountability")
     repair_willingness = st.slider("Repair Willingness Shown", 0, 10, 5, key="grievance_repair_willingness")
     trust_concern = st.slider("Trust / Fidelity Concern", 0, 5, 1, key="grievance_trust_concern")
