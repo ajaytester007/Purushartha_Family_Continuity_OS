@@ -754,3 +754,83 @@ st.subheader("💌 Today's Feed Forward Prompt")
 st.info("What is one small thing we could do this week that our future selves would thank us for?")
 # === END V3.4 FEED FORWARD JOURNEY STUDIO ===
 
+
+
+# === V4.0 MOBILE APP READINESS SUITE ===
+
+def mobile_readiness_plan_v40(stage, privacy_level, reminder_style, companion_style):
+    stage_routes = {
+        'Just Starting': 'Begin with values, boundaries, curiosity, and low-pressure positive quests.',
+        'Dating': 'Build friendship, trust patterns, and transparent communication rituals.',
+        'Engaged': 'Plan responsibilities, families, finances, ceremonies, and repair rituals.',
+        'Married': 'Strengthen household teamwork, shared vision, intimacy, and conflict repair.',
+        'Parenting': 'Protect sleep, teamwork, child routines, affection, and family support.',
+        'Renewal': 'Rebuild joy, health, adventure, and shared purpose.',
+        'Recovery': 'Use safety-first repair, accountability, and short retest windows.',
+        'Makeover': 'Preserve strengths, release one habit, begin one ritual, and create one new memory.'
+    }
+    return stage_routes.get(stage, stage_routes['Just Starting'])
+
+def app_store_readiness_score_v40(onboarding, privacy, reminders, reports, mobile_arch):
+    score = onboarding*20 + privacy*25 + reminders*15 + reports*20 + mobile_arch*20
+    if score >= 85:
+        label = 'Strong prototype readiness; next step is native/PWA implementation.'
+    elif score >= 65:
+        label = 'Good product direction; strengthen privacy, persistence, and mobile shell.'
+    else:
+        label = 'Concept stage; complete core app-store readiness foundations first.'
+    return score, label
+
+st.markdown('---')
+st.header('📱 v4.0 Mobile App Readiness Suite')
+st.caption('Prepare the relationship companion for a real iPhone / Android product experience.')
+st.warning('App Store / Google Play distribution will need privacy policy, terms, safety disclaimers, account/data handling decisions, and usually a native or PWA shell beyond Streamlit.')
+
+v40_stage = st.selectbox('Primary user journey stage', ['Just Starting','Dating','Engaged','Married','Parenting','Renewal','Recovery','Makeover'], key='v40_stage')
+v40_privacy = st.selectbox('Privacy posture', ['Public demo only','Private local only','Account-based private app','Hybrid with explicit consent'], key='v40_privacy')
+v40_reminders = st.selectbox('Reminder style', ['Gentle daily check-in','After special encounters','Weekly recap only','User-controlled quiet mode'], key='v40_reminders')
+v40_companion = st.selectbox('Companion style', ['Genie guide','Coach style','Journal friend','Minimalist planner'], key='v40_companion')
+route_v40 = mobile_readiness_plan_v40(v40_stage, v40_privacy, v40_reminders, v40_companion)
+st.subheader('Recommended Journey Route')
+st.info(route_v40)
+
+st.subheader('App Store Readiness Checklist')
+c1,c2,c3,c4,c5 = st.columns(5)
+with c1: onboarding_v40 = st.slider('Onboarding',0,1,1,key='v40_onboarding')
+with c2: privacy_v40 = st.slider('Privacy Center',0,1,0,key='v40_privacy_center')
+with c3: reminders_v40 = st.slider('Reminders',0,1,0,key='v40_reminders_score')
+with c4: reports_v40 = st.slider('Reports',0,1,1,key='v40_reports')
+with c5: mobile_arch_v40 = st.slider('Native/PWA Shell',0,1,0,key='v40_mobile_arch')
+score_v40, label_v40 = app_store_readiness_score_v40(onboarding_v40, privacy_v40, reminders_v40, reports_v40, mobile_arch_v40)
+st.metric('App Store Readiness Score', f'{score_v40}/100')
+st.success(label_v40)
+
+st.subheader('Mobile Screen Blueprint')
+screen_rows_v40 = [
+    ('Splash + Safety Intro','Start with warmth and clear safety boundaries.'),
+    ('Onboarding Wizard','Capture stage, goals, privacy, reminder preferences.'),
+    ('Companion Home','Mood, quest, Genie, memory prompt, daily log.'),
+    ('Daily Log','One-minute private reflection.'),
+    ('Quest Center','Positive score-lift actions and celebrations.'),
+    ('Report Center','Grievance reports, weekly recaps, makeover reports.'),
+    ('Privacy Center','Consent, export, retention, delete controls.'),
+    ('Export Center','Markdown, CSV, PDF-ready reports.')
+]
+for name_v40, desc_v40 in screen_rows_v40:
+    st.markdown(f'**{name_v40}** — {desc_v40}')
+
+st.subheader('Native App Architecture Recommendation')
+st.markdown('- Keep Streamlit as public demo / admin workbench.\n- Build production mobile UX in React Native + Expo or Flutter.\n- Use a small backend API for accounts, encrypted logs, reminders, and reports.\n- Use local-first storage for private drafts where possible.\n- Add privacy policy, terms, support URL, data deletion flow, and safety disclaimer before store submission.')
+
+if st.button('Generate Mobile App Readiness Brief', key='v40_generate_brief'):
+    brief_v40 = '# Mobile App Readiness Brief\n\n'
+    brief_v40 += '## Stage\n' + v40_stage + '\n\n'
+    brief_v40 += '## Privacy Posture\n' + v40_privacy + '\n\n'
+    brief_v40 += '## Reminder Style\n' + v40_reminders + '\n\n'
+    brief_v40 += '## Companion Style\n' + v40_companion + '\n\n'
+    brief_v40 += '## Recommended Route\n' + route_v40 + '\n\n'
+    brief_v40 += '## App Store Readiness Score\n' + str(score_v40) + '/100\n\n'
+    brief_v40 += '## Next Build Steps\n1. Finalize privacy policy, terms, and safety disclaimer.\n2. Create PWA or native shell.\n3. Build onboarding, companion home, daily log, quest center, report center, and privacy center.\n4. Add secure persistence and export/delete controls.\n5. Prepare screenshots and App Store metadata.'
+    st.markdown(brief_v40)
+    st.download_button('Download Mobile App Readiness Brief', brief_v40, 'mobile_app_readiness_brief.md', 'text/markdown', key='v40_download_brief')
+# === END V4.0 MOBILE APP READINESS SUITE ===

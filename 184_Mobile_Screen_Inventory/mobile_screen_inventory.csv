@@ -1,0 +1,13 @@
+﻿screen_id,screen_name,purpose,priority
+M001,Splash and Safety Intro,Introduce app and safety disclaimer,High
+M002,Onboarding Wizard,Capture stage privacy reminders and goals,High
+M003,Companion Home,Daily hub for mood quest Genie and reminders,High
+M004,Daily Log,One-minute check-in,High
+M005,Quest Center,Positive score-lift activities,High
+M006,Genie Companion,Guided navigation and encouragement,High
+M007,Grievance Report Builder,Structured concerns into action plans,High
+M008,Report Center,Download and view reports,Medium
+M009,Trend Dashboard,View scores streaks and patterns,Medium
+M010,Privacy Center,Consent export retention and delete controls,High
+M011,Reminder Settings,Daily and event-triggered reminders,Medium
+M012,Export Center,Markdown CSV PDF-ready exports,Medium
