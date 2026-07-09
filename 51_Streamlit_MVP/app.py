@@ -1281,3 +1281,121 @@ if st.button('Generate Sacred Maze Report', key='generate_maze_report_v45'):
     st.markdown(report)
     st.download_button('Download Sacred Maze Report', report, 'sacred_maze_report.md', 'text/markdown', key='download_maze_report_v45')
 # === END V4.5 SACRED MAZE ENGINE ===
+
+
+# === V4.6 CHECKLIST INTAKE LIFE COACH ===
+import io
+
+def parse_intake_v46(raw):
+    rows=[]
+    for line in raw.strip().splitlines():
+        if not line.strip() or line.lower().startswith('role,'):
+            continue
+        parts=[p.strip() for p in line.split(',')]
+        if len(parts)<3:
+            continue
+        role=parts[0]
+        dimension=parts[1]
+        try: score=float(parts[2])
+        except: score=0
+        note=','.join(parts[3:]).strip() if len(parts)>3 else ''
+        rows.append({'role':role,'dimension':dimension,'score':score,'note':note})
+    return rows
+
+def advisory_band_v46(score):
+    if score>=85: return 'Continue with confidence: strong readiness, maintain rituals and sanity checks.'
+    if score>=70: return 'Continue with mending: promising, but specific repair actions are needed.'
+    if score>=55: return 'Incubate before milestone: pause public escalation and retest behavior.'
+    if score>=40: return 'High caution: structured coaching, family reset, and delayed decision advised.'
+    return 'Exit review: protect dignity, document learning, and avoid forcing the pair-up.'
+
+def playbook_v46(low_dim):
+    d=low_dim.lower()
+    if 'repair' in d or 'communication' in d: return 'Accountability Repair: one apology, one correction, one retest behavior, no public humiliation.'
+    if 'family' in d or 'ecology' in d: return 'Family Boundary Reset: both families agree to support without control, gossip, or scorekeeping.'
+    if 'artha' in d or 'budget' in d or 'logistics' in d: return 'Budget and Logistics Clarity: write the real cost, distance, travel, role, and timeline plan.'
+    if 'kama' in d or 'happiness' in d: return 'Happiness Substitution Quest: create low-cost joy rituals that preserve excitement without pressure.'
+    if 'moksha' in d: return 'Dignity and Freedom Reset: each partner names what helps them grow without control.'
+    if 'wedding' in d: return 'Milestone Incubation: delay launch until repair and logistics are visibly stronger.'
+    return 'Tone Reset: reduce emotional drama, separate facts from assumptions, and retest in 7-14 days.'
+
+st.markdown('---')
+st.header('📥 v4.6 Checklist Intake + Family Life-Coach')
+st.caption('Paste anonymous completed checklist data from bride-side parent, prospective bride, groom-side family, or trusted circle. The app infers mending guidance and milestone readiness.')
+st.warning('Use anonymous roles only. Do not enter real names, phone numbers, emails, addresses, or identifying private details.')
+
+sample_v46='''role,dimension,score,note\nBride Parent,Dharma,72,Concerned about accountability and respectful family communication\nBride Parent,Artha,64,Cost distance and logistics need clearer planning\nBride Parent,Kama,70,There is warmth but emotional drama reduces joy\nBride Parent,Moksha,66,Needs more space dignity and maturity\nBride Parent,Family Ecology,58,Family boundaries and tone need reset\nBride Parent,Repair,52,Repair needs visible behavior not just words\nBride Parent,Wedding Launch,55,Needs incubation before public milestone\nBride,Trust,68,Wants reassurance and consistent actions\nBride,Communication,60,Needs calmer hard conversations\nBride,Happiness,74,Feels connection but wants less emotional volatility\nBride,Role Play,62,Stress episodes need better teamwork\nBride,Exit Risk,45,Not hopeless but risk is present if repair does not improve'''
+raw_v46=st.text_area('Paste anonymous checklist CSV rows', value=sample_v46, height=260, key='raw_checklist_v46')
+rows_v46=parse_intake_v46(raw_v46)
+
+if rows_v46:
+    scores_v46=[r['score'] for r in rows_v46]
+    avg_v46=round(sum(scores_v46)/len(scores_v46),1)
+    low_v46=min(rows_v46, key=lambda r:r['score'])
+    high_v46=max(rows_v46, key=lambda r:r['score'])
+    role_groups_v46={}
+    for r in rows_v46:
+        role_groups_v46.setdefault(r['role'],[]).append(r['score'])
+    role_summary_v46={k:round(sum(v)/len(v),1) for k,v in role_groups_v46.items()}
+    gap_v46=round(max(role_summary_v46.values())-min(role_summary_v46.values()),1) if role_summary_v46 else 0
+    st.subheader('📊 Intake Analysis')
+    a,b,c=st.columns(3)
+    a.metric('Average Intake Score', f'{avg_v46}/100')
+    b.metric('Lowest Dimension', f"{low_v46['dimension']} {low_v46['score']}/100")
+    c.metric('Role Disagreement Gap', gap_v46)
+    st.info(advisory_band_v46(avg_v46))
+    st.success(f"Strongest area: {high_v46['dimension']} from {high_v46['role']} ({high_v46['score']}/100)")
+    st.warning(f"Mending focus: {low_v46['dimension']} from {low_v46['role']} ({low_v46['score']}/100)")
+    st.subheader('🧭 Life-Coach Guidance for Both Families')
+    st.markdown('- Couple: own the repair; do not outsource the relationship to parents.')
+    st.markdown('- Bride-side family: protect dignity while allowing the couple room to demonstrate maturity.')
+    st.markdown('- Groom-side family: reduce defensiveness; show visible accountability and tone reset.')
+    st.markdown('- Trusted circle: reduce noise, gossip, and scorekeeping; support retest behavior.')
+    st.subheader('🛠️ Recommended Mending Playbook')
+    st.success(playbook_v46(low_v46['dimension']))
+    if avg_v46<45 or low_v46['score']<35:
+        st.error('Beyond-repair caution: prepare an exit-review report unless visible safety, dignity, and repair improve quickly.')
+    elif avg_v46<60:
+        st.warning('Incubation advised: do not escalate wedding or public milestone until retest improves.')
+    else:
+        st.info('Mending path exists: use the playbook and retest in 7-14 days.')
+    if st.button('Generate Two-Family Advisory Report', key='generate_advisory_report_v46'):
+        role_lines='\n'.join([f'- {k}: {v}/100' for k,v in role_summary_v46.items()])
+        report=f'''# Two-Family Advisory Report
+
+## Anonymous Intake Summary
+Average Score: {avg_v46}/100
+
+## Recommendation
+{advisory_band_v46(avg_v46)}
+
+## Role Summary
+{role_lines}
+
+## Strongest Area
+{high_v46['dimension']} from {high_v46['role']} ({high_v46['score']}/100)
+
+## Mending Focus
+{low_v46['dimension']} from {low_v46['role']} ({low_v46['score']}/100)
+
+## Recommended Playbook
+{playbook_v46(low_v46['dimension'])}
+
+## Guidance to Couple
+Own the repair directly. Demonstrate visible behavior change before asking families to bless the next milestone.
+
+## Guidance to Bride-Side Family
+Protect dignity and clarity while avoiding over-control, public shaming, or escalation.
+
+## Guidance to Groom-Side Family
+Show accountability, reduce defensiveness, and help create a safe tone for retest.
+
+## Retest Plan
+Retest the mending focus after 7-14 days of visible behavior change.
+
+## Exit Rule
+If scores dip beyond repair because of safety, dignity, repeated non-repair, coercion, or no-hope patterns, prepare a dignified exit report.
+'''
+        st.markdown(report)
+        st.download_button('Download Two-Family Advisory Report', report, 'two_family_advisory_report.md', 'text/markdown', key='download_advisory_report_v46')
+# === END V4.6 CHECKLIST INTAKE LIFE COACH ===

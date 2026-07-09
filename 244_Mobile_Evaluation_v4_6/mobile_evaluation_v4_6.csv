@@ -1,0 +1,7 @@
+﻿feature,check_from_iphone,pass_criteria
+Checklist Intake,Streamlit v4.6 section,Can paste CSV-like checklist data
+Inference Engine,Streamlit v4.6 section,Shows inferred themes and recommendation
+Mending Playbook,Streamlit v4.6 section,Shows actions for couple and both families
+Beyond Repair,Extreme low scores,Shows dignified exit-review guidance
+Two-Family Report,Download button,Downloads advisory report
+Mobile Shell,Home Screen icon,Shows v4.6 update after Pages deploy
