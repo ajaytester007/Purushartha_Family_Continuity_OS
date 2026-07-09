@@ -515,8 +515,8 @@ with tabs[0]:
     st.subheader("Guided Intake")
     relationship_stage = st.selectbox("Relationship Stage", ["New Relationship", "Committed", "Engaged", "Married", "Parenting", "Midlife", "Recovery"])
     challenge_type = st.multiselect("Challenge Type", ["Communication", "Trust", "Family Interference", "Burden Skew", "Respect", "Accountability", "Financial Stress", "Emotional Safety", "Future Planning"])
-    severity = st.slider("Current Severity", 0, 5, 2)
-    recurrence = st.slider("Repeated Pattern Count", 0, 10, 1)
+    severity = st.slider("Current Severity", 0, 5, 2, key="consult_current_severity")
+    recurrence = st.slider("Repeated Pattern Count", 0, 10, 1, key="consult_repeated_pattern_count")
     family_influence = st.slider("Family / Influencer Pressure", 0, 5, 1)
     st.subheader("Correspondence Analyzer")
     text = st.text_area("Paste sanitized correspondence or describe the interaction", height=220, placeholder="Remove names, phone numbers, addresses, health details, and third-party private information.")
@@ -648,11 +648,11 @@ with tabs[1]:
     facts = st.text_area("Observed Facts", height=100)
     impact = st.text_area("Emotional Impact", height=100)
     desired_change = st.text_area("Desired Change", height=100)
-    severity = st.slider("Severity", 0, 5, 2)
-    recurrence = st.slider("Repeated Pattern Count", 0, 10, 1)
-    accountability = st.slider("Partner Accountability Shown", 0, 10, 5)
-    repair_willingness = st.slider("Repair Willingness Shown", 0, 10, 5)
-    trust_concern = st.slider("Trust / Fidelity Concern", 0, 5, 1)
+    severity = st.slider("Severity", 0, 5, 2, key="grievance_severity")
+    recurrence = st.slider("Repeated Pattern Count", 0, 10, 1, key="consult_repeated_pattern_count")
+    accountability = st.slider("Partner Accountability Shown", 0, 10, 5, key="grievance_partner_accountability")
+    repair_willingness = st.slider("Repair Willingness Shown", 0, 10, 5, key="grievance_repair_willingness")
+    trust_concern = st.slider("Trust / Fidelity Concern", 0, 5, 1, key="grievance_trust_concern")
 
     if st.button("Generate Grievance Report"):
         fidelity, prospect, action, report = build_grievance_report_v32(summary, facts, impact, desired_change, severity, recurrence, accountability, repair_willingness, trust_concern)
@@ -662,3 +662,4 @@ with tabs[1]:
         st.info(action)
         st.markdown(report)
         st.download_button("Download Grievance Report", report, "relationship_grievance_report.md", "text/markdown")
+
