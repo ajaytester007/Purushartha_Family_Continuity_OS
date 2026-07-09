@@ -664,6 +664,20 @@ with tabs[1]:
         c2.metric("Relationship Prospect Score", f"{prospect}/100")
         st.info(action)
         st.markdown(report)
+                st.download_button("Download Grievance Report", report, "relationship_grievance_report.md", "text/markdown")
+        if st.button("Save Grievance Report Index", key="save_grievance_report_index_v33"):
+            append_csv_row_v33(GRIEVANCE_REPORTS_PATH, {
+                "report_id": f"GR{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
+                "created_at": datetime.utcnow().isoformat(),
+                "summary": summary,
+                "fidelity_score": fidelity,
+                "prospect_score": prospect,
+                "recommended_action": action,
+                "retest_days": 14 if prospect >= 55 else 7,
+                "report_path": "generated_in_app"
+            })
+            st.success("Grievance report index saved.")
+
 
 
 def append_csv_row_v33(path, row):

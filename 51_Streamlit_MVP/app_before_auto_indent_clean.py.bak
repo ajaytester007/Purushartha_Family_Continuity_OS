@@ -664,6 +664,8 @@ with tabs[1]:
         c2.metric("Relationship Prospect Score", f"{prospect}/100")
         st.info(action)
         st.markdown(report)
+                st.download_button("Download Grievance Report", report, "relationship_grievance_report.md", "text/markdown")
+
 
 
 def append_csv_row_v33(path, row):

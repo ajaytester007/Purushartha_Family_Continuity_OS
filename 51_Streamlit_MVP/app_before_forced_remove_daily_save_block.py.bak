@@ -639,6 +639,21 @@ with tabs[0]:
 - Choose one bonding ritual: tea walk, shared song, gratitude message, prayer/meditation, reading, cooking, or quiet time.
 - Optional symbolic prompt: wear a lucky color, carry a meaningful crystal/object, or choose a shared memory cue.
 """)
+            if st.button("Save Daily Companion Log", key="save_daily_companion_log_v33"):
+        append_csv_row_v33(DAILY_LOG_PATH, {
+            "log_id": f"DL{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
+            "created_at": datetime.utcnow().isoformat(),
+            "mood": mood,
+            "relationship_energy": energy,
+            "partner_effort": partner_effort,
+            "self_effort": self_effort,
+            "unresolved": unresolved,
+            "special_encounter": special_encounter,
+            "gratitude_note": gratitude_text,
+            "concern_note": concern_text,
+            "daily_nudge": nudge
+        })
+        st.success("Daily companion log saved.")
         st.subheader("Memory / Vlog Prompt")
         st.markdown("Capture one happy photo, voice note, or short reflection privately if it helps preserve good moments.")
 
@@ -664,6 +679,20 @@ with tabs[1]:
         c2.metric("Relationship Prospect Score", f"{prospect}/100")
         st.info(action)
         st.markdown(report)
+                st.download_button("Download Grievance Report", report, "relationship_grievance_report.md", "text/markdown")
+        if st.button("Save Grievance Report Index", key="save_grievance_report_index_v33"):
+            append_csv_row_v33(GRIEVANCE_REPORTS_PATH, {
+                "report_id": f"GR{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
+                "created_at": datetime.utcnow().isoformat(),
+                "summary": summary,
+                "fidelity_score": fidelity,
+                "prospect_score": prospect,
+                "recommended_action": action,
+                "retest_days": 14 if prospect >= 55 else 7,
+                "report_path": "generated_in_app"
+            })
+            st.success("Grievance report index saved.")
+
 
 
 def append_csv_row_v33(path, row):
