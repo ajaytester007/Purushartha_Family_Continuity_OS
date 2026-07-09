@@ -1,0 +1,21 @@
+{
+  "name": "Purushartha Companion",
+  "short_name": "Purushartha",
+  "start_url": "./mobile.html",
+  "display": "standalone",
+  "background_color": "#fff7ed",
+  "theme_color": "#7c3aed",
+  "description": "Relationship compatibility, quests, reports, and journey readiness.",
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

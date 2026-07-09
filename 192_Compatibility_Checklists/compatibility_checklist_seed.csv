@@ -1,0 +1,23 @@
+﻿checklist_id,category,item,weight,answer_type,notes
+P001,Primary Partners,Shared life purpose,5,scale_1_5,Long-term direction
+P002,Primary Partners,Emotional maturity,5,scale_1_5,Anger repair regulation
+P003,Primary Partners,Communication clarity,5,scale_1_5,Hard topics without contempt
+P004,Primary Partners,Trust and fidelity posture,5,scale_1_5,Honesty boundaries transparency
+P005,Primary Partners,Conflict repair capacity,5,scale_1_5,Apology correction retest
+P006,Primary Partners,Household responsibility fit,4,scale_1_5,Chores errands bills routines
+P007,Primary Partners,Financial compatibility,5,scale_1_5,Spending savings debt budget
+P008,Primary Partners,Distance and logistics feasibility,4,scale_1_5,Travel relocation commute
+P009,Primary Partners,Health and recovery support,4,scale_1_5,Sickness caregiving recovery
+P010,Primary Partners,Happiness quotient,4,scale_1_5,Joy affection humor companionship
+F001,Parents,Respectful family boundaries,5,scale_1_5,Support without control
+F002,Parents,Cultural alignment,4,scale_1_5,Rituals food values celebrations
+F003,Parents,Wedding union support,4,scale_1_5,Constructive launch support
+F004,Parents,Budget realism,5,scale_1_5,Practical expectations
+S001,Siblings and Friends,Trusted circle encouragement,3,scale_1_5,Lift the couple
+S002,Siblings and Friends,Drama interference risk,4,scale_1_5,Low gossip triangulation
+L001,Modern Life,Work-life balance,4,scale_1_5,Time energy availability
+L002,Modern Life,Cost and logistics resilience,5,scale_1_5,Survive constraints
+L003,Modern Life,Substitution creativity,3,scale_1_5,Happiness with alternatives
+R001,Role Play,Episode teamwork,5,scale_1_5,Stress episode handling
+R002,Role Play,Leadership and followership,4,scale_1_5,Lead support handoff
+R003,Role Play,Recovery after mistake,5,scale_1_5,Mature after episode
